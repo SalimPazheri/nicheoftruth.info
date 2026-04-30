@@ -1,0 +1,364 @@
+:root {
+  --ink: #0d1b1e;
+  --muted: #526467;
+  --line: #d9e3e1;
+  --cream: #f5f2e9;
+  --paper: #ffffff;
+  --green: #0f6b57;
+  --green-dark: #0a473b;
+  --gold: #d5a847;
+  --shadow: 0 24px 70px rgba(13, 27, 30, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hero {
+  min-height: 100vh;
+  position: relative;
+  color: #fff;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(7, 22, 26, 0.88), rgba(7, 22, 26, 0.42), rgba(7, 22, 26, 0.72)),
+    url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=2400&q=85") center / cover;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.52));
+}
+
+.nav,
+.topbar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand__mark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.13);
+  color: #fff;
+  font-weight: 800;
+}
+
+.brand strong,
+.brand small {
+  display: block;
+}
+
+.brand strong {
+  font-size: 16px;
+}
+
+.brand small {
+  margin-top: 2px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 12px;
+}
+
+.brand--dark .brand__mark {
+  border-color: rgba(15, 107, 87, 0.25);
+  background: var(--green);
+}
+
+.brand--dark small {
+  color: var(--muted);
+}
+
+.nav__links,
+.topbar__link {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.topbar__link {
+  color: var(--green);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  width: min(780px, calc(100% - 32px));
+  margin: 120px auto 0;
+  padding-right: 180px;
+}
+
+.eyebrow {
+  margin: 0 0 18px;
+  color: #f5d27d;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.eyebrow--dark {
+  color: var(--green);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(42px, 7vw, 78px);
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.panel h1 {
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.05;
+}
+
+.lead {
+  max-width: 650px;
+  margin: 26px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  border: 0;
+  border-radius: 8px;
+  padding: 0 18px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.button--primary,
+.button--submit {
+  background: var(--gold);
+  color: #211806;
+}
+
+.button--secondary {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.button--secondary-dark,
+.button--voice {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--green);
+}
+
+.button--voice.is-listening {
+  background: var(--green);
+  color: #fff;
+}
+
+.page {
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(245, 242, 233, 0.94), rgba(245, 242, 233, 0.98)),
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2200&q=82") center / cover fixed;
+}
+
+.form-shell,
+.table-shell {
+  width: min(880px, calc(100% - 32px));
+  margin: 42px auto 80px;
+}
+
+.table-shell {
+  width: min(1180px, calc(100% - 32px));
+}
+
+.panel {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: clamp(24px, 5vw, 52px);
+}
+
+.panel--wide {
+  padding: clamp(20px, 4vw, 36px);
+}
+
+.muted {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.small {
+  font-size: 13px;
+}
+
+.feedback-form {
+  display: grid;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  padding: 13px 14px;
+  font: inherit;
+  font-size: 15px;
+  outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(15, 107, 87, 0.12);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.voice-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.voice-status {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.thanks {
+  margin-top: 28px;
+  border: 1px solid rgba(15, 107, 87, 0.18);
+  border-radius: 8px;
+  background: #eef8f4;
+  padding: 24px;
+}
+
+.thanks h2 {
+  margin: 0 0 8px;
+}
+
+.table-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 860px;
+}
+
+th,
+td {
+  border-bottom: 1px solid var(--line);
+  padding: 13px 14px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+}
+
+th {
+  color: var(--green-dark);
+  background: #f7faf7;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+td {
+  color: #27383a;
+}
+
+@media (max-width: 760px) {
+  .nav,
+  .topbar,
+  .table-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .nav__links {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .hero__content {
+    margin-top: 72px;
+    padding-right: 0;
+  }
+
+  .lead {
+    font-size: 16px;
+  }
+}

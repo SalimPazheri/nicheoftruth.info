@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Feedback | Niche of Truth</title>
+    <meta name="description" content="Share feedback after receiving a free Malayalam Quran copy.">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body class="page">
+    <header class="topbar">
+      <a class="brand brand--dark" href="./index.html">
+        <span class="brand__mark">N</span>
+        <span>
+          <strong>Niche of Truth</strong>
+          <small>Quran feedback</small>
+        </span>
+      </a>
+      <a class="topbar__link" href="./responses.html">View entries</a>
+    </header>
+
+    <main class="form-shell">
+      <section class="panel">
+        <p class="eyebrow eyebrow--dark">Free Malayalam Quran copy</p>
+        <h1>Share your feedback</h1>
+        <p class="muted">
+          You can type your message or use voice input. Your feedback helps us improve how we serve visitors across Kerala.
+        </p>
+
+        <form id="feedbackForm" class="feedback-form">
+          <label>
+            Name
+            <input id="name" name="name" autocomplete="name" placeholder="Your name">
+          </label>
+
+          <label>
+            Mobile or WhatsApp
+            <input id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="+91...">
+          </label>
+
+          <label>
+            District
+            <select id="district" name="district">
+              <option value="">Select district</option>
+              <option>Thiruvananthapuram</option>
+              <option>Kollam</option>
+              <option>Pathanamthitta</option>
+              <option>Alappuzha</option>
+              <option>Kottayam</option>
+              <option>Idukki</option>
+              <option>Ernakulam</option>
+              <option>Thrissur</option>
+              <option>Palakkad</option>
+              <option>Malappuram</option>
+              <option>Kozhikode</option>
+              <option>Wayanad</option>
+              <option>Kannur</option>
+              <option>Kasaragod</option>
+            </select>
+          </label>
+
+          <label>
+            Feedback
+            <textarea id="message" name="message" rows="7" required placeholder="Please share your thoughts, questions, or request for follow-up."></textarea>
+          </label>
+
+          <div class="voice-row">
+            <button class="button button--voice" type="button" id="voiceButton">Start Voice</button>
+            <span id="voiceStatus" class="voice-status">Voice input is optional.</span>
+          </div>
+
+          <button class="button button--submit" type="submit">Submit Feedback</button>
+        </form>
+
+        <div id="thanks" class="thanks" hidden>
+          <h2>Thanks for your feedback.</h2>
+          <p>We have received your message and will get back to you soon, insha Allah.</p>
+          <a class="button button--primary" href="./index.html">Return Home</a>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

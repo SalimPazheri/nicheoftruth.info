@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Feedback Entries | Niche of Truth</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body class="page">
+    <header class="topbar">
+      <a class="brand brand--dark" href="./index.html">
+        <span class="brand__mark">N</span>
+        <span>
+          <strong>Niche of Truth</strong>
+          <small>Visitor responses</small>
+        </span>
+      </a>
+      <a class="topbar__link" href="./feedback.html">Add feedback</a>
+    </header>
+
+    <main class="table-shell">
+      <section class="panel panel--wide">
+        <div class="table-heading">
+          <div>
+            <p class="eyebrow eyebrow--dark">Local preview table</p>
+            <h1>Feedback entries</h1>
+          </div>
+          <button class="button button--secondary-dark" id="clearEntries" type="button">Clear preview</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>District</th>
+                <th>Feedback</th>
+              </tr>
+            </thead>
+            <tbody id="entriesBody"></tbody>
+          </table>
+        </div>
+        <p class="muted small">
+          This preview stores data in this browser only. Use the included Supabase SQL schema for real online storage.
+        </p>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
