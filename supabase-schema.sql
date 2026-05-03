@@ -1,4 +1,4 @@
-create table public.feedback_entries (
+create table if not exists public.feedback_entries (
   id uuid primary key default gen_random_uuid(),
   created_at timestamptz not null default now(),
   name text,
@@ -13,12 +13,14 @@ create table public.feedback_entries (
 
 alter table public.feedback_entries enable row level security;
 
+drop policy if exists "Visitors can submit feedback" on public.feedback_entries;
 create policy "Visitors can submit feedback"
 on public.feedback_entries
 for insert
 to anon
 with check (message is not null and length(trim(message)) > 0);
 
+drop policy if exists "Authenticated admins can read feedback" on public.feedback_entries;
 create policy "Authenticated admins can read feedback"
 on public.feedback_entries
 for select
@@ -37,18 +39,21 @@ create table if not exists public.guide_numbers (
 
 alter table public.guide_numbers enable row level security;
 
+drop policy if exists "Visitors can read active guide numbers" on public.guide_numbers;
 create policy "Visitors can read active guide numbers"
 on public.guide_numbers
 for select
 to anon
 using (is_active = true);
 
+drop policy if exists "Authenticated admins can read guide numbers" on public.guide_numbers;
 create policy "Authenticated admins can read guide numbers"
 on public.guide_numbers
 for select
 to authenticated
 using (true);
 
+drop policy if exists "Authenticated admins can insert guide numbers" on public.guide_numbers;
 create policy "Authenticated admins can insert guide numbers"
 on public.guide_numbers
 for insert
@@ -60,6 +65,7 @@ with check (
   and array_length(intentions, 1) > 0
 );
 
+drop policy if exists "Authenticated admins can update guide numbers" on public.guide_numbers;
 create policy "Authenticated admins can update guide numbers"
 on public.guide_numbers
 for update
@@ -72,6 +78,7 @@ with check (
   and array_length(intentions, 1) > 0
 );
 
+drop policy if exists "Authenticated admins can delete guide numbers" on public.guide_numbers;
 create policy "Authenticated admins can delete guide numbers"
 on public.guide_numbers
 for delete
