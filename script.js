@@ -29,6 +29,11 @@
       'ribbon.death': 'Death',
       'ribbon.purpose': 'Purpose of Life',
       'ribbon.revert': 'Revert',
+      'birth.eyebrow': 'The first cry',
+      'birth.title': 'A life begins with a question already inside it.',
+      'birth.lead': 'Every birth arrives helpless, treasured, and dependent. Before a person can speak, life is already asking: Who gave me this breath, this care, this purpose?',
+      'birth.body': 'Islam invites the heart to look at that beginning with humility. We did not create ourselves. We were brought into existence, sustained, and guided toward a life that can know its Creator.',
+      'birth.askCta': 'Ask about life and purpose',
       'home.eyebrow': 'For sincere questions, calm answers, and open hearts',
       'home.title': 'Ask freely. Reflect deeply. Discover Islam with clarity.',
       'home.lead': 'Niche of Truth is a welcoming space for non-Muslim visitors to ask questions about Islam, request guidance, and share feedback after receiving a free Malayalam translation of the Holy Quran.',
@@ -155,6 +160,11 @@
       'ribbon.death': 'मृत्यु',
       'ribbon.purpose': 'जीवन का उद्देश्य',
       'ribbon.revert': 'वापसी',
+      'birth.eyebrow': 'पहली पुकार',
+      'birth.title': 'जीवन अपने भीतर एक सवाल लेकर शुरू होता है।',
+      'birth.lead': 'हर जन्म असहाय, प्रिय और निर्भर होकर आता है। बोलने से पहले ही जीवन पूछता है: मुझे यह सांस, यह देखभाल, यह उद्देश्य किसने दिया?',
+      'birth.body': 'इस्लाम दिल को विनम्रता से इस शुरुआत को देखने के लिए बुलाता है। हमने खुद को पैदा नहीं किया। हमें अस्तित्व दिया गया, संभाला गया, और अपने रचयिता को जानने वाली जिंदगी की ओर मार्गदर्शन दिया गया।',
+      'birth.askCta': 'जीवन और उद्देश्य के बारे में पूछें',
       'home.eyebrow': 'सच्चे सवाल, शांत जवाब और खुले दिल',
       'home.title': 'खुलकर पूछें। गहराई से सोचें। स्पष्टता के साथ इस्लाम को जानें।',
       'home.lead': 'निच ऑफ ट्रुथ गैर-मुस्लिम आगंतुकों के लिए इस्लाम के बारे में सवाल पूछने, मार्गदर्शन मांगने और पवित्र कुरआन के मुफ्त मलयालम अनुवाद को प्राप्त करने के बाद प्रतिक्रिया साझा करने की एक स्वागतपूर्ण जगह है।',
@@ -281,6 +291,11 @@
       'ribbon.death': 'മരണം',
       'ribbon.purpose': 'ജീവിത ലക്ഷ്യം',
       'ribbon.revert': 'മടങ്ങിവരവ്',
+      'birth.eyebrow': 'ആദ്യ കരച്ചിൽ',
+      'birth.title': 'ഒരു ചോദ്യം ഉള്ളിൽ തന്നെ കൊണ്ടാണ് ജീവിതം തുടങ്ങുന്നത്.',
+      'birth.lead': 'ഓരോ ജനനവും നിസ്സഹായവും വിലപ്പെട്ടതും ആശ്രിതവുമായാണ് എത്തുന്നത്. സംസാരിക്കാൻ മുമ്പേ ജീവിതം ചോദിക്കുന്നു: ഈ ശ്വാസവും പരിചരണവും ലക്ഷ്യവും ആരാണ് എനിക്ക് നൽകിയത്?',
+      'birth.body': 'ആ തുടക്കത്തെ വിനയത്തോടെ നോക്കാൻ ഇസ്ലാം ഹൃദയത്തെ ക്ഷണിക്കുന്നു. നമ്മൾ നമ്മെ സ്വയം സൃഷ്ടിച്ചില്ല. നമുക്ക് അസ്തിത്വം നൽകപ്പെട്ടു, സംരക്ഷിക്കപ്പെട്ടു, സ്രഷ്ടാവിനെ അറിയുന്ന ജീവിതത്തിലേക്ക് നയിക്കപ്പെട്ടു.',
+      'birth.askCta': 'ജീവിതവും ലക്ഷ്യവും കുറിച്ച് ചോദിക്കുക',
       'home.eyebrow': 'സത്യസന്ധമായ ചോദ്യങ്ങൾക്കും ശാന്തമായ ഉത്തരങ്ങൾക്കും തുറന്ന ഹൃദയങ്ങൾക്കും',
       'home.title': 'സ്വതന്ത്രമായി ചോദിക്കുക. ആഴത്തിൽ ചിന്തിക്കുക. വ്യക്തതയോടെ ഇസ്ലാം അറിയുക.',
       'home.lead': 'ഇസ്ലാമിനെക്കുറിച്ച് ചോദ്യങ്ങൾ ചോദിക്കാനും മാർഗനിർദേശം തേടാനും വിശുദ്ധ ഖുർആന്റെ സൗജന്യ മലയാള വിവർത്തനം ലഭിച്ച ശേഷം പ്രതികരണം പങ്കിടാനും മുസ്ലിം അല്ലാത്ത സന്ദർശകർക്ക് സ്വാഗതം ചെയ്യുന്ന ഇടമാണ് നിച് ഓഫ് ട്രൂത്ത്.',
@@ -407,6 +422,11 @@
       'ribbon.death': 'الموت',
       'ribbon.purpose': 'غاية الحياة',
       'ribbon.revert': 'العودة',
+      'birth.eyebrow': 'الصرخة الأولى',
+      'birth.title': 'تبدأ الحياة وسؤالها يسكن داخلها.',
+      'birth.lead': 'يأتي كل مولود عاجزا، مكرما، ومحتاجا إلى الرعاية. قبل أن يتكلم الإنسان، تسأل الحياة: من منحني هذا النفس وهذه العناية وهذا الهدف؟',
+      'birth.body': 'يدعو الإسلام القلب إلى النظر إلى تلك البداية بتواضع. نحن لم نخلق أنفسنا. لقد أوجدنا الله، ورعانا، وهدانا إلى حياة تعرف خالقها.',
+      'birth.askCta': 'اسأل عن الحياة والغاية',
       'home.eyebrow': 'لأسئلة صادقة، وإجابات هادئة، وقلوب منفتحة',
       'home.title': 'اسأل بحرية. تأمل بعمق. تعرّف إلى الإسلام بوضوح.',
       'home.lead': 'مشكاة الحق مساحة ترحيبية للزوار غير المسلمين لطرح أسئلة عن الإسلام، وطلب التوجيه، ومشاركة الملاحظات بعد استلام ترجمة مالايالامية مجانية للقرآن الكريم.',
@@ -713,6 +733,106 @@
     }
   }
 
+  function setupBirthExperience() {
+    const birthNavLink = document.getElementById('birthNavLink');
+    const birthExperience = document.getElementById('birthExperience');
+    const closeBirthExperience = document.getElementById('closeBirthExperience');
+    const birthAudio = document.getElementById('birthAudio');
+    const birthPanel = document.getElementById('birth');
+    const birthAskButton = document.getElementById('birthAskButton');
+    const askQuestionButton = document.getElementById('askQuestionButton');
+    let fadeFrame = null;
+
+    if (!birthNavLink || !birthExperience || !birthAudio || !birthPanel) return;
+
+    birthNavLink.addEventListener('click', function (event) {
+      event.preventDefault();
+      openBirthExperience();
+    });
+
+    if (window.location.hash === '#birth') {
+      window.setTimeout(openBirthExperience, 400);
+    }
+
+    if (closeBirthExperience) {
+      closeBirthExperience.addEventListener('click', closeBirthView);
+    }
+
+    birthExperience.addEventListener('click', function (event) {
+      if (event.target === birthExperience || event.target.classList.contains('topic-focus__backdrop')) {
+        closeBirthView();
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && !birthExperience.hidden) {
+        closeBirthView();
+      }
+    });
+
+    if (birthAskButton && askQuestionButton) {
+      birthAskButton.addEventListener('click', function () {
+        closeBirthView();
+        window.setTimeout(function () {
+          askQuestionButton.click();
+        }, 450);
+      });
+    }
+
+    function openBirthExperience() {
+      birthExperience.hidden = false;
+      birthAudio.currentTime = 0;
+      birthAudio.volume = 0;
+      birthAudio.play().then(function () {
+        fadeAudio(0.72, 2200);
+      }).catch(function () {
+        // The visual transition still works if the browser refuses audio playback.
+      });
+
+      window.requestAnimationFrame(function () {
+        birthExperience.classList.add('is-visible');
+        birthPanel.focus();
+      });
+    }
+
+    function closeBirthView() {
+      birthExperience.classList.remove('is-visible');
+      fadeAudio(0, 700, function () {
+        birthAudio.pause();
+        birthAudio.currentTime = 0;
+      });
+      window.setTimeout(function () {
+        if (!birthExperience.classList.contains('is-visible')) {
+          birthExperience.hidden = true;
+        }
+      }, 900);
+    }
+
+    function fadeAudio(targetVolume, duration, onComplete) {
+      if (fadeFrame) {
+        window.cancelAnimationFrame(fadeFrame);
+      }
+
+      const startVolume = birthAudio.volume;
+      const startedAt = performance.now();
+
+      function tick(now) {
+        const progress = Math.min((now - startedAt) / duration, 1);
+        birthAudio.volume = startVolume + ((targetVolume - startVolume) * progress);
+
+        if (progress < 1) {
+          fadeFrame = window.requestAnimationFrame(tick);
+          return;
+        }
+
+        fadeFrame = null;
+        if (onComplete) onComplete();
+      }
+
+      fadeFrame = window.requestAnimationFrame(tick);
+    }
+  }
+
   function selectGuide(details) {
     const matchingGuide = guideNumbers.find(function (guide) {
       return guide.languages.includes(currentLanguage) && guide.intentions.includes(details.intention);
@@ -924,6 +1044,7 @@
   applyLanguage();
   setupLanguageSelector();
   setupQuestionWidget();
+  setupBirthExperience();
   updateVoiceUi();
   loadPublicGuides();
 
