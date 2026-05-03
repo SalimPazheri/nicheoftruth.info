@@ -154,6 +154,79 @@
       'district.kannur': 'कन्नूर',
       'district.kasaragod': 'कासरगोड'
     },
+    ml: {
+      'brand.name': 'നിച് ഓഫ് ട്രൂത്ത്',
+      'brand.feedback': 'ഖുർആൻ പ്രതികരണം',
+      'brand.admin': 'പ്രതികരണ അഡ്മിൻ',
+      'language.label': 'ഭാഷ',
+      'nav.feedback': 'പ്രതികരണം',
+      'home.eyebrow': 'സത്യസന്ധമായ ചോദ്യങ്ങൾക്കും ശാന്തമായ ഉത്തരങ്ങൾക്കും തുറന്ന ഹൃദയങ്ങൾക്കും',
+      'home.title': 'സ്വതന്ത്രമായി ചോദിക്കുക. ആഴത്തിൽ ചിന്തിക്കുക. വ്യക്തതയോടെ ഇസ്ലാം അറിയുക.',
+      'home.lead': 'ഇസ്ലാമിനെക്കുറിച്ച് ചോദ്യങ്ങൾ ചോദിക്കാനും മാർഗനിർദേശം തേടാനും വിശുദ്ധ ഖുർആന്റെ സൗജന്യ മലയാള വിവർത്തനം ലഭിച്ച ശേഷം പ്രതികരണം പങ്കിടാനും മുസ്ലിം അല്ലാത്ത സന്ദർശകർക്ക് സ്വാഗതം ചെയ്യുന്ന ഇടമാണ് നിച് ഓഫ് ട്രൂത്ത്.',
+      'home.feedbackCta': 'ഖുർആൻ പ്രതികരണം നൽകുക',
+      'home.askCta': 'ചോദ്യം ചോദിക്കുക',
+      'feedback.eyebrow': 'സൗജന്യ മലയാള ഖുർആൻ കോപ്പി',
+      'feedback.title': 'നിങ്ങളുടെ പ്രതികരണം പങ്കിടുക',
+      'feedback.intro': 'നിങ്ങൾക്ക് സന്ദേശം ടൈപ്പ് ചെയ്യുകയോ വോയ്സ് ഇൻപുട്ട് ഉപയോഗിക്കുകയോ ചെയ്യാം. കേരളത്തിലുടനീളമുള്ള സന്ദർശകരെ കൂടുതൽ മെച്ചമായി സേവിക്കാൻ നിങ്ങളുടെ പ്രതികരണം ഞങ്ങളെ സഹായിക്കുന്നു.',
+      'feedback.name': 'പേര്',
+      'feedback.namePlaceholder': 'നിങ്ങളുടെ പേര്',
+      'feedback.phone': 'മൊബൈൽ അല്ലെങ്കിൽ വാട്സ്ആപ്പ്',
+      'feedback.district': 'ജില്ല',
+      'feedback.message': 'പ്രതികരണം',
+      'feedback.messagePlaceholder': 'ദയവായി നിങ്ങളുടെ ചിന്തകൾ, ചോദ്യങ്ങൾ, അല്ലെങ്കിൽ ഫോളോ-അപ്പ് അഭ്യർത്ഥന പങ്കിടുക.',
+      'feedback.voiceStart': 'വോയ്സ് ആരംഭിക്കുക',
+      'feedback.voiceStop': 'വോയ്സ് നിർത്തുക',
+      'feedback.voiceOptional': 'വോയ്സ് ഇൻപുട്ട് ഐച്ഛികമാണ്.',
+      'feedback.voiceListening': 'കേൾക്കുന്നു... നിങ്ങളുടെ പ്രതികരണം പറയുക.',
+      'feedback.voiceStopped': 'വോയ്സ് നിർത്തി. സമർപ്പിക്കുന്നതിന് മുമ്പ് ടെക്സ്റ്റ് തിരുത്താം.',
+      'feedback.voiceFailed': 'വോയ്സ് ഇൻപുട്ട് പരാജയപ്പെട്ടു. ദയവായി നിങ്ങളുടെ പ്രതികരണം ടൈപ്പ് ചെയ്യുക.',
+      'feedback.voiceUnsupported': 'ഈ ബ്രൗസറിൽ വോയ്സ് ഇൻപുട്ട് പിന്തുണയ്ക്കുന്നില്ല. ദയവായി നിങ്ങളുടെ പ്രതികരണം ടൈപ്പ് ചെയ്യുക.',
+      'feedback.submit': 'പ്രതികരണം സമർപ്പിക്കുക',
+      'feedback.submitting': 'സമർപ്പിക്കുന്നു...',
+      'feedback.thanksTitle': 'നിങ്ങളുടെ പ്രതികരണത്തിന് നന്ദി.',
+      'feedback.thanksNamed': 'നന്ദി, {name}.',
+      'feedback.thanksBody': 'നിങ്ങളുടെ സന്ദേശം ഞങ്ങൾക്ക് ലഭിച്ചു. ഇൻഷാ അല്ലാഹ്, ഉടൻ തന്നെ ഞങ്ങൾ നിങ്ങളെ ബന്ധപ്പെടും.',
+      'feedback.closeHint': 'ഈ പേജ് സ്വയം അടയ്ക്കാൻ ശ്രമിക്കും. തുറന്നുതന്നെ ഇരിക്കുകയാണെങ്കിൽ, ഈ ടാബ് അടയ്ക്കാം.',
+      'feedback.closePage': 'പേജ് അടയ്ക്കുക',
+      'admin.loginEyebrow': 'അഡ്മിൻ ലോഗിൻ',
+      'admin.entriesTitle': 'പ്രതികരണ എൻട്രികൾ',
+      'admin.loginIntro': 'സമർപ്പിച്ച പ്രതികരണങ്ങൾ കാണാൻ ലോഗിൻ ചെയ്യുക.',
+      'admin.email': 'ഇമെയിൽ',
+      'admin.password': 'പാസ്‌വേഡ്',
+      'admin.login': 'ലോഗിൻ',
+      'admin.loggingIn': 'ലോഗിൻ ചെയ്യുന്നു...',
+      'admin.loginUnavailable': 'ലോഗിൻ ലഭ്യമല്ല. ദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക.',
+      'admin.loginFailed': 'ലോഗിൻ പരാജയപ്പെട്ടു. ഇമെയിലും പാസ്‌വേഡും പരിശോധിക്കുക.',
+      'admin.listEyebrow': 'അഡ്മിൻ പ്രതികരണ പട്ടിക',
+      'admin.logout': 'ലോഗൗട്ട്',
+      'admin.submittedDate': 'സമർപ്പിച്ച തീയതി',
+      'admin.search': 'തിരയുക',
+      'admin.clear': 'മായ്ക്കുക',
+      'admin.date': 'തീയതി',
+      'admin.phone': 'ഫോൺ',
+      'admin.loading': 'പ്രതികരണങ്ങൾ ലോഡ് ചെയ്യുന്നു...',
+      'admin.noEntries': 'ഇനിയും പ്രതികരണ എൻട്രികൾ ഇല്ല.',
+      'admin.noEntriesFound': 'പ്രതികരണ എൻട്രികൾ കണ്ടെത്തിയില്ല.',
+      'admin.unableToLoad': 'പ്രതികരണ എൻട്രികൾ ലോഡ് ചെയ്യാനായില്ല.',
+      'admin.entriesFoundOne': '1 പ്രതികരണ എൻട്രി കണ്ടെത്തി.',
+      'admin.entriesFoundMany': '{count} പ്രതികരണ എൻട്രികൾ കണ്ടെത്തി.',
+      'district.select': 'ജില്ല തിരഞ്ഞെടുക്കുക',
+      'district.all': 'എല്ലാ ജില്ലകളും',
+      'district.thiruvananthapuram': 'തിരുവനന്തപുരം',
+      'district.kollam': 'കൊല്ലം',
+      'district.pathanamthitta': 'പത്തനംതിട്ട',
+      'district.alappuzha': 'ആലപ്പുഴ',
+      'district.kottayam': 'കോട്ടയം',
+      'district.idukki': 'ഇടുക്കി',
+      'district.ernakulam': 'എറണാകുളം',
+      'district.thrissur': 'തൃശൂർ',
+      'district.palakkad': 'പാലക്കാട്',
+      'district.malappuram': 'മലപ്പുറം',
+      'district.kozhikode': 'കോഴിക്കോട്',
+      'district.wayanad': 'വയനാട്',
+      'district.kannur': 'കണ്ണൂർ',
+      'district.kasaragod': 'കാസർഗോഡ്'
+    },
     ar: {
       'brand.name': 'مكان الحقيقة',
       'brand.feedback': 'ملاحظات القرآن',
@@ -335,6 +408,7 @@
 
   function getSpeechLanguage() {
     if (currentLanguage === 'hi') return 'hi-IN';
+    if (currentLanguage === 'ml') return 'ml-IN';
     if (currentLanguage === 'ar') return 'ar-SA';
     return 'en-US';
   }
@@ -666,7 +740,13 @@
 
   function formatDate(value) {
     if (!value) return '-';
-    const locale = currentLanguage === 'hi' ? 'hi-IN' : currentLanguage === 'ar' ? 'ar-SA' : 'en-IN';
+    const locale = currentLanguage === 'hi'
+      ? 'hi-IN'
+      : currentLanguage === 'ml'
+        ? 'ml-IN'
+        : currentLanguage === 'ar'
+          ? 'ar-SA'
+          : 'en-IN';
     return new Date(value).toLocaleString(locale);
   }
 
