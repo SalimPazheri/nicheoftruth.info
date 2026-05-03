@@ -107,6 +107,75 @@
             <tbody id="entriesBody"></tbody>
           </table>
         </div>
+
+        <section class="admin-section" id="guideAdminPanel">
+          <div class="table-heading">
+            <div>
+              <p class="eyebrow eyebrow--dark" data-i18n="guideAdmin.eyebrow">Guide numbers</p>
+              <h2 data-i18n="guideAdmin.title">Guide Numbers</h2>
+              <p class="muted small" data-i18n="guideAdmin.intro">Add or update counselor WhatsApp numbers used by Ask a Question.</p>
+            </div>
+          </div>
+
+          <form id="guideForm" class="guide-form">
+            <input id="guideId" name="guideId" type="hidden">
+
+            <label>
+              <span data-i18n="guideAdmin.name">Guide name</span>
+              <input id="guideName" name="name" type="text" autocomplete="name" required>
+            </label>
+
+            <label>
+              <span data-i18n="guideAdmin.phone">WhatsApp number</span>
+              <input id="guidePhone" name="phone" type="tel" inputmode="tel" placeholder="918157815279" required>
+            </label>
+
+            <fieldset class="checkbox-group">
+              <legend data-i18n="guideAdmin.languages">Languages</legend>
+              <label class="checkbox-field"><input name="guideLanguage" type="checkbox" value="en" checked><span>English</span></label>
+              <label class="checkbox-field"><input name="guideLanguage" type="checkbox" value="hi" checked><span>Hindi</span></label>
+              <label class="checkbox-field"><input name="guideLanguage" type="checkbox" value="ml" checked><span>Malayalam</span></label>
+              <label class="checkbox-field"><input name="guideLanguage" type="checkbox" value="ar" checked><span>Arabic</span></label>
+            </fieldset>
+
+            <fieldset class="checkbox-group checkbox-group--wide">
+              <legend data-i18n="guideAdmin.intentions">Intentions</legend>
+              <label class="checkbox-field"><input name="guideIntention" type="checkbox" value="To learn" checked><span data-i18n="guide.intentLearn">To learn</span></label>
+              <label class="checkbox-field"><input name="guideIntention" type="checkbox" value="To embrace Islam" checked><span data-i18n="guide.intentEmbrace">To embrace Islam</span></label>
+              <label class="checkbox-field"><input name="guideIntention" type="checkbox" value="Need counseling" checked><span data-i18n="guide.intentCounseling">Need counseling</span></label>
+              <label class="checkbox-field"><input name="guideIntention" type="checkbox" value="Need Quran copy" checked><span data-i18n="guide.intentQuran">Need Quran copy</span></label>
+              <label class="checkbox-field"><input name="guideIntention" type="checkbox" value="Other question" checked><span data-i18n="guide.intentOther">Other question</span></label>
+            </fieldset>
+
+            <label class="checkbox-field guide-form__active">
+              <input id="guideActive" name="active" type="checkbox" checked>
+              <span data-i18n="guideAdmin.active">Active for routing</span>
+            </label>
+
+            <div class="guide-form__actions">
+              <button class="button button--submit" type="submit" data-i18n="guideAdmin.save">Save guide</button>
+              <button class="button button--secondary-dark" id="guideReset" type="button" data-i18n="guideAdmin.reset">Reset</button>
+            </div>
+          </form>
+
+          <p id="guideStatus" class="form-message" aria-live="polite"></p>
+
+          <div class="table-wrap">
+            <table class="guide-table">
+              <thead>
+                <tr>
+                  <th data-i18n="guideAdmin.name">Guide name</th>
+                  <th data-i18n="guideAdmin.phone">WhatsApp number</th>
+                  <th data-i18n="guideAdmin.languages">Languages</th>
+                  <th data-i18n="guideAdmin.intentions">Intentions</th>
+                  <th data-i18n="guideAdmin.status">Status</th>
+                  <th data-i18n="guideAdmin.actions">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="guidesBody"></tbody>
+            </table>
+          </div>
+        </section>
       </section>
     </main>
 

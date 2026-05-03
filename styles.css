@@ -536,6 +536,72 @@ textarea {
   margin-bottom: 22px;
 }
 
+.admin-section {
+  margin-top: 34px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.admin-section h2 {
+  margin: 0;
+  font-size: clamp(24px, 3vw, 36px);
+  line-height: 1.05;
+}
+
+.guide-form {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(180px, 1fr);
+  gap: 16px;
+  margin: 22px 0 8px;
+}
+
+.checkbox-group {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.checkbox-group--wide {
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+
+.checkbox-group legend {
+  padding: 0 6px;
+  color: var(--green-dark);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.guide-form__active,
+.guide-form__actions {
+  align-self: end;
+}
+
+.guide-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.table-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.table-actions .button {
+  min-height: 36px;
+  padding: 0 12px;
+  font-size: 12px;
+}
+
 .table-wrap {
   overflow-x: auto;
   border: 1px solid var(--line);
@@ -598,8 +664,21 @@ td {
   }
 
   .filters label,
-  .filters .button {
+  .filters .button,
+  .guide-form__actions .button {
     width: 100%;
+  }
+
+  .guide-form {
+    grid-template-columns: 1fr;
+  }
+
+  .checkbox-group--wide {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-form__actions {
+    justify-content: stretch;
   }
 
   .nav__links {

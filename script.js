@@ -4,7 +4,7 @@
   const supabaseUrl = 'https://nihkdysxoplpegwqlayi.supabase.co';
   const supabaseKey = 'sb_publishable_-lx2myS6ubyMTBpKZ5eS3g_fFIbs_of';
   const submitTimeoutMs = 8000;
-  const guideNumbers = [
+  const fallbackGuideNumbers = [
     {
       name: 'Main Guide',
       phone: '918157815279',
@@ -12,6 +12,7 @@
       intentions: ['To learn', 'To embrace Islam', 'Need counseling', 'Need Quran copy', 'Other question']
     }
   ];
+  let guideNumbers = fallbackGuideNumbers.slice();
   const supabaseClient = window.supabase
     ? window.supabase.createClient(supabaseUrl, supabaseKey)
     : null;
@@ -101,6 +102,30 @@
       'admin.unableToLoad': 'Unable to load feedback entries.',
       'admin.entriesFoundOne': '1 feedback entry found.',
       'admin.entriesFoundMany': '{count} feedback entries found.',
+      'guideAdmin.eyebrow': 'Guide numbers',
+      'guideAdmin.title': 'Guide Numbers',
+      'guideAdmin.intro': 'Add or update counselor WhatsApp numbers used by Ask a Question.',
+      'guideAdmin.name': 'Guide name',
+      'guideAdmin.phone': 'WhatsApp number',
+      'guideAdmin.languages': 'Languages',
+      'guideAdmin.intentions': 'Intentions',
+      'guideAdmin.active': 'Active for routing',
+      'guideAdmin.save': 'Save guide',
+      'guideAdmin.reset': 'Reset',
+      'guideAdmin.status': 'Status',
+      'guideAdmin.actions': 'Actions',
+      'guideAdmin.edit': 'Edit',
+      'guideAdmin.delete': 'Delete',
+      'guideAdmin.activeStatus': 'Active',
+      'guideAdmin.inactiveStatus': 'Inactive',
+      'guideAdmin.loading': 'Loading guide numbers...',
+      'guideAdmin.noGuides': 'No guide numbers added yet.',
+      'guideAdmin.saved': 'Guide number saved.',
+      'guideAdmin.deleted': 'Guide number deleted.',
+      'guideAdmin.required': 'Please add a name, WhatsApp number, language, and intention.',
+      'guideAdmin.loadFailed': 'Unable to load guide numbers.',
+      'guideAdmin.saveFailed': 'Unable to save guide number.',
+      'guideAdmin.deleteFailed': 'Unable to delete guide number.',
       'district.select': 'Select district',
       'district.all': 'All districts',
       'district.thiruvananthapuram': 'Thiruvananthapuram',
@@ -203,6 +228,30 @@
       'admin.unableToLoad': 'प्रतिक्रिया प्रविष्टियां लोड नहीं हो सकीं।',
       'admin.entriesFoundOne': '1 प्रतिक्रिया प्रविष्टि मिली।',
       'admin.entriesFoundMany': '{count} प्रतिक्रिया प्रविष्टियां मिलीं।',
+      'guideAdmin.eyebrow': 'गाइड नंबर',
+      'guideAdmin.title': 'गाइड नंबर',
+      'guideAdmin.intro': 'Ask a Question के लिए उपयोग होने वाले काउंसलर WhatsApp नंबर जोड़ें या अपडेट करें।',
+      'guideAdmin.name': 'गाइड का नाम',
+      'guideAdmin.phone': 'WhatsApp नंबर',
+      'guideAdmin.languages': 'भाषाएं',
+      'guideAdmin.intentions': 'उद्देश्य',
+      'guideAdmin.active': 'रूटिंग के लिए सक्रिय',
+      'guideAdmin.save': 'गाइड सेव करें',
+      'guideAdmin.reset': 'रीसेट',
+      'guideAdmin.status': 'स्थिति',
+      'guideAdmin.actions': 'कार्य',
+      'guideAdmin.edit': 'संपादित करें',
+      'guideAdmin.delete': 'हटाएं',
+      'guideAdmin.activeStatus': 'सक्रिय',
+      'guideAdmin.inactiveStatus': 'निष्क्रिय',
+      'guideAdmin.loading': 'गाइड नंबर लोड हो रहे हैं...',
+      'guideAdmin.noGuides': 'अभी कोई गाइड नंबर नहीं जोड़ा गया है।',
+      'guideAdmin.saved': 'गाइड नंबर सेव हो गया।',
+      'guideAdmin.deleted': 'गाइड नंबर हटा दिया गया।',
+      'guideAdmin.required': 'कृपया नाम, WhatsApp नंबर, भाषा और उद्देश्य जोड़ें।',
+      'guideAdmin.loadFailed': 'गाइड नंबर लोड नहीं हो सके।',
+      'guideAdmin.saveFailed': 'गाइड नंबर सेव नहीं हो सका।',
+      'guideAdmin.deleteFailed': 'गाइड नंबर हटाया नहीं जा सका।',
       'district.select': 'जिला चुनें',
       'district.all': 'सभी जिले',
       'district.thiruvananthapuram': 'तिरुवनंतपुरम',
@@ -305,6 +354,30 @@
       'admin.unableToLoad': 'പ്രതികരണ എൻട്രികൾ ലോഡ് ചെയ്യാനായില്ല.',
       'admin.entriesFoundOne': '1 പ്രതികരണ എൻട്രി കണ്ടെത്തി.',
       'admin.entriesFoundMany': '{count} പ്രതികരണ എൻട്രികൾ കണ്ടെത്തി.',
+      'guideAdmin.eyebrow': 'ഗൈഡ് നമ്പറുകൾ',
+      'guideAdmin.title': 'ഗൈഡ് നമ്പറുകൾ',
+      'guideAdmin.intro': 'ചോദ്യം ചോദിക്കുക എന്നതിൽ ഉപയോഗിക്കുന്ന കൗൺസിലർ WhatsApp നമ്പറുകൾ ചേർക്കുകയോ തിരുത്തുകയോ ചെയ്യുക.',
+      'guideAdmin.name': 'ഗൈഡിന്റെ പേര്',
+      'guideAdmin.phone': 'WhatsApp നമ്പർ',
+      'guideAdmin.languages': 'ഭാഷകൾ',
+      'guideAdmin.intentions': 'ഉദ്ദേശ്യങ്ങൾ',
+      'guideAdmin.active': 'റൂട്ടിംഗിന് സജീവം',
+      'guideAdmin.save': 'ഗൈഡ് സേവ് ചെയ്യുക',
+      'guideAdmin.reset': 'റീസെറ്റ്',
+      'guideAdmin.status': 'സ്ഥിതി',
+      'guideAdmin.actions': 'നടപടികൾ',
+      'guideAdmin.edit': 'തിരുത്തുക',
+      'guideAdmin.delete': 'നീക്കം ചെയ്യുക',
+      'guideAdmin.activeStatus': 'സജീവം',
+      'guideAdmin.inactiveStatus': 'നിഷ്ക്രിയം',
+      'guideAdmin.loading': 'ഗൈഡ് നമ്പറുകൾ ലോഡ് ചെയ്യുന്നു...',
+      'guideAdmin.noGuides': 'ഇനിയും ഗൈഡ് നമ്പറുകൾ ചേർത്തിട്ടില്ല.',
+      'guideAdmin.saved': 'ഗൈഡ് നമ്പർ സേവ് ചെയ്തു.',
+      'guideAdmin.deleted': 'ഗൈഡ് നമ്പർ നീക്കം ചെയ്തു.',
+      'guideAdmin.required': 'ദയവായി പേര്, WhatsApp നമ്പർ, ഭാഷ, ഉദ്ദേശ്യം ചേർക്കുക.',
+      'guideAdmin.loadFailed': 'ഗൈഡ് നമ്പറുകൾ ലോഡ് ചെയ്യാനായില്ല.',
+      'guideAdmin.saveFailed': 'ഗൈഡ് നമ്പർ സേവ് ചെയ്യാനായില്ല.',
+      'guideAdmin.deleteFailed': 'ഗൈഡ് നമ്പർ നീക്കം ചെയ്യാനായില്ല.',
       'district.select': 'ജില്ല തിരഞ്ഞെടുക്കുക',
       'district.all': 'എല്ലാ ജില്ലകളും',
       'district.thiruvananthapuram': 'തിരുവനന്തപുരം',
@@ -407,6 +480,30 @@
       'admin.unableToLoad': 'تعذر تحميل إدخالات الملاحظات.',
       'admin.entriesFoundOne': 'تم العثور على إدخال واحد.',
       'admin.entriesFoundMany': 'تم العثور على {count} إدخالات.',
+      'guideAdmin.eyebrow': 'أرقام المرشدين',
+      'guideAdmin.title': 'أرقام المرشدين',
+      'guideAdmin.intro': 'أضف أو حدّث أرقام واتساب للمستشارين المستخدمة في اطلب سؤالا.',
+      'guideAdmin.name': 'اسم المرشد',
+      'guideAdmin.phone': 'رقم واتساب',
+      'guideAdmin.languages': 'اللغات',
+      'guideAdmin.intentions': 'النيات',
+      'guideAdmin.active': 'نشط للتوجيه',
+      'guideAdmin.save': 'حفظ المرشد',
+      'guideAdmin.reset': 'إعادة ضبط',
+      'guideAdmin.status': 'الحالة',
+      'guideAdmin.actions': 'الإجراءات',
+      'guideAdmin.edit': 'تعديل',
+      'guideAdmin.delete': 'حذف',
+      'guideAdmin.activeStatus': 'نشط',
+      'guideAdmin.inactiveStatus': 'غير نشط',
+      'guideAdmin.loading': 'جار تحميل أرقام المرشدين...',
+      'guideAdmin.noGuides': 'لم تتم إضافة أرقام مرشدين بعد.',
+      'guideAdmin.saved': 'تم حفظ رقم المرشد.',
+      'guideAdmin.deleted': 'تم حذف رقم المرشد.',
+      'guideAdmin.required': 'يرجى إضافة الاسم ورقم واتساب واللغة والنية.',
+      'guideAdmin.loadFailed': 'تعذر تحميل أرقام المرشدين.',
+      'guideAdmin.saveFailed': 'تعذر حفظ رقم المرشد.',
+      'guideAdmin.deleteFailed': 'تعذر حذف رقم المرشد.',
       'district.select': 'اختر المنطقة',
       'district.all': 'كل المناطق',
       'district.thiruvananthapuram': 'ثيروفانانثابورام',
@@ -828,6 +925,7 @@
   setupLanguageSelector();
   setupQuestionWidget();
   updateVoiceUi();
+  loadPublicGuides();
 
   if (loginForm) {
     const loginPanel = document.getElementById('loginPanel');
@@ -839,6 +937,15 @@
     const districtFilter = document.getElementById('districtFilter');
     const logoutButton = document.getElementById('logoutButton');
     const clearFilters = document.getElementById('clearFilters');
+    const guideForm = document.getElementById('guideForm');
+    const guideStatus = document.getElementById('guideStatus');
+    const guidesBody = document.getElementById('guidesBody');
+    const guideReset = document.getElementById('guideReset');
+    const guideId = document.getElementById('guideId');
+    const guideName = document.getElementById('guideName');
+    const guidePhone = document.getElementById('guidePhone');
+    const guideActive = document.getElementById('guideActive');
+    let lastRenderedGuides = [];
 
     setupAdminPage();
 
@@ -892,6 +999,38 @@
       window.location.href = './index.html';
     });
 
+    if (guideForm) {
+      guideForm.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        await saveGuide();
+      });
+    }
+
+    if (guideReset) {
+      guideReset.addEventListener('click', resetGuideForm);
+    }
+
+    if (guidesBody) {
+      guidesBody.addEventListener('click', async function (event) {
+        const actionButton = event.target.closest('[data-guide-action]');
+        if (!actionButton) return;
+
+        const guide = lastRenderedGuides.find(function (item) {
+          return item.id === actionButton.dataset.guideId;
+        });
+        if (!guide) return;
+
+        if (actionButton.dataset.guideAction === 'edit') {
+          editGuide(guide);
+          return;
+        }
+
+        if (actionButton.dataset.guideAction === 'delete') {
+          await deleteGuide(guide.id);
+        }
+      });
+    }
+
     async function setupAdminPage() {
       if (!supabaseClient) {
         loginMessage.textContent = t('admin.loginUnavailable');
@@ -907,7 +1046,7 @@
     async function showEntries() {
       loginPanel.hidden = true;
       entriesPanel.hidden = false;
-      await loadEntries();
+      await Promise.all([loadEntries(), loadGuides()]);
     }
 
     async function loadEntries() {
@@ -947,6 +1086,155 @@
         entriesBody.innerHTML = `<tr><td colspan="5">${t('admin.unableToLoad')}</td></tr>`;
       }
     }
+
+    async function loadGuides() {
+      if (!guidesBody) return;
+
+      guideStatus.textContent = t('guideAdmin.loading');
+      guidesBody.innerHTML = `<tr><td colspan="6">${t('guideAdmin.loading')}</td></tr>`;
+
+      try {
+        const { data, error } = await supabaseClient
+          .from('guide_numbers')
+          .select('id, name, phone, languages, intentions, is_active, created_at')
+          .order('created_at', { ascending: false });
+
+        if (error) throw error;
+
+        const guides = (data || []).map(normalizeGuide);
+        lastRenderedGuides = guides;
+        renderGuides(guides);
+        guideStatus.textContent = guides.length ? '' : t('guideAdmin.noGuides');
+        guideNumbers = guides.filter(function (guide) {
+          return guide.is_active;
+        });
+
+        if (!guideNumbers.length) {
+          guideNumbers = fallbackGuideNumbers.slice();
+        }
+      } catch (error) {
+        console.error('Guide load failed:', error);
+        guideStatus.textContent = error.message || t('guideAdmin.loadFailed');
+        guidesBody.innerHTML = `<tr><td colspan="6">${t('guideAdmin.loadFailed')}</td></tr>`;
+      }
+    }
+
+    async function saveGuide() {
+      const payload = getGuidePayload();
+      if (!payload) {
+        guideStatus.textContent = t('guideAdmin.required');
+        return;
+      }
+
+      const saveButton = guideForm.querySelector('[type="submit"]');
+      saveButton.disabled = true;
+      guideStatus.textContent = '';
+
+      try {
+        const query = guideId.value
+          ? supabaseClient.from('guide_numbers').update(payload).eq('id', guideId.value)
+          : supabaseClient.from('guide_numbers').insert(payload);
+        const { error } = await query;
+        if (error) throw error;
+
+        resetGuideForm();
+        await loadGuides();
+        guideStatus.textContent = t('guideAdmin.saved');
+      } catch (error) {
+        console.error('Guide save failed:', error);
+        guideStatus.textContent = error.message || t('guideAdmin.saveFailed');
+      } finally {
+        saveButton.disabled = false;
+      }
+    }
+
+    async function deleteGuide(id) {
+      guideStatus.textContent = '';
+
+      try {
+        const { error } = await supabaseClient
+          .from('guide_numbers')
+          .delete()
+          .eq('id', id);
+
+        if (error) throw error;
+        resetGuideForm();
+        await loadGuides();
+        guideStatus.textContent = t('guideAdmin.deleted');
+      } catch (error) {
+        console.error('Guide delete failed:', error);
+        guideStatus.textContent = error.message || t('guideAdmin.deleteFailed');
+      }
+    }
+
+    function getGuidePayload() {
+      const languages = getCheckedValues('guideLanguage');
+      const intentions = getCheckedValues('guideIntention');
+      const phone = guidePhone.value.replace(/[^\d]/g, '');
+      const name = guideName.value.trim();
+
+      if (!name || !phone || !languages.length || !intentions.length) {
+        return null;
+      }
+
+      return {
+        name,
+        phone,
+        languages,
+        intentions,
+        is_active: guideActive.checked
+      };
+    }
+
+    function editGuide(guide) {
+      guideId.value = guide.id;
+      guideName.value = guide.name;
+      guidePhone.value = guide.phone;
+      guideActive.checked = Boolean(guide.is_active);
+      setCheckedValues('guideLanguage', guide.languages);
+      setCheckedValues('guideIntention', guide.intentions);
+      guideName.focus();
+    }
+
+    function resetGuideForm() {
+      if (!guideForm) return;
+      guideForm.reset();
+      guideId.value = '';
+    }
+
+    function getCheckedValues(name) {
+      return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(function (input) {
+        return input.value;
+      });
+    }
+
+    function setCheckedValues(name, values) {
+      document.querySelectorAll(`input[name="${name}"]`).forEach(function (input) {
+        input.checked = values.includes(input.value);
+      });
+    }
+
+    function renderGuides(guides) {
+      guidesBody.innerHTML = guides.length
+        ? guides.map(function (guide) {
+            return `
+              <tr>
+                <td>${escapeHtml(guide.name || '-')}</td>
+                <td>${escapeHtml(guide.phone || '-')}</td>
+                <td>${escapeHtml(formatGuideLanguages(guide.languages))}</td>
+                <td>${escapeHtml(guide.intentions.join(', ') || '-')}</td>
+                <td>${t(guide.is_active ? 'guideAdmin.activeStatus' : 'guideAdmin.inactiveStatus')}</td>
+                <td>
+                  <div class="table-actions">
+                    <button class="button button--secondary-dark" type="button" data-guide-action="edit" data-guide-id="${guide.id}">${t('guideAdmin.edit')}</button>
+                    <button class="button button--secondary-dark" type="button" data-guide-action="delete" data-guide-id="${guide.id}">${t('guideAdmin.delete')}</button>
+                  </div>
+                </td>
+              </tr>
+            `;
+          }).join('')
+        : `<tr><td colspan="6">${t('guideAdmin.noGuides')}</td></tr>`;
+    }
   }
 
   if (entriesBody && !loginForm) {
@@ -968,6 +1256,51 @@
           `;
         }).join('')
       : `<tr><td colspan="5">${t('admin.noEntries')}</td></tr>`;
+  }
+
+  async function loadPublicGuides() {
+    if (!supabaseClient) return;
+
+    try {
+      const { data, error } = await supabaseClient
+        .from('guide_numbers')
+        .select('name, phone, languages, intentions, is_active')
+        .eq('is_active', true);
+
+      if (error) throw error;
+
+      const activeGuides = (data || []).map(normalizeGuide).filter(function (guide) {
+        return guide.is_active;
+      });
+
+      if (activeGuides.length) {
+        guideNumbers = activeGuides;
+      }
+    } catch {
+      guideNumbers = fallbackGuideNumbers.slice();
+    }
+  }
+
+  function normalizeGuide(guide) {
+    return {
+      ...guide,
+      languages: Array.isArray(guide.languages) ? guide.languages : [],
+      intentions: Array.isArray(guide.intentions) ? guide.intentions : [],
+      is_active: guide.is_active !== false
+    };
+  }
+
+  function formatGuideLanguages(languages) {
+    const labels = {
+      en: 'English',
+      hi: 'Hindi',
+      ml: 'Malayalam',
+      ar: 'Arabic'
+    };
+
+    return languages.map(function (language) {
+      return labels[language] || language;
+    }).join(', ') || '-';
   }
 
   function formatDate(value) {
