@@ -375,6 +375,10 @@ h1 {
   padding: 18px;
 }
 
+.chat-form__whatsapp {
+  width: 100%;
+}
+
 .checkbox-field {
   display: grid;
   grid-template-columns: 18px 1fr;

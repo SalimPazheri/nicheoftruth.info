@@ -4,7 +4,14 @@
   const supabaseUrl = 'https://nihkdysxoplpegwqlayi.supabase.co';
   const supabaseKey = 'sb_publishable_-lx2myS6ubyMTBpKZ5eS3g_fFIbs_of';
   const submitTimeoutMs = 8000;
-  const counselorWhatsAppNumber = '918157815279';
+  const guideNumbers = [
+    {
+      name: 'Main Guide',
+      phone: '918157815279',
+      languages: ['en', 'hi', 'ml', 'ar'],
+      intentions: ['To learn', 'To embrace Islam', 'Need counseling', 'Need Quran copy', 'Other question']
+    }
+  ];
   const supabaseClient = window.supabase
     ? window.supabase.createClient(supabaseUrl, supabaseKey)
     : null;
@@ -44,7 +51,10 @@
       'guide.questionPlaceholder': 'Type your question briefly.',
       'guide.consent': 'I agree to share these details with a Niche of Truth counselor on WhatsApp.',
       'guide.connect': 'Connect on WhatsApp',
+      'guide.continueWhatsapp': 'Continue on WhatsApp',
+      'guide.anotherQuestion': 'Submit another question',
       'guide.required': 'Please fill all fields and confirm consent.',
+      'guide.opened': 'WhatsApp is opening now. If it did not open, tap Continue on WhatsApp.',
       'guide.whatsappIntro': 'Niche of Truth website enquiry',
       'feedback.eyebrow': 'Free Malayalam Quran copy',
       'feedback.title': 'Share your feedback',
@@ -143,7 +153,10 @@
       'guide.questionPlaceholder': 'अपना सवाल संक्षेप में लिखें।',
       'guide.consent': 'मैं इन विवरणों को व्हाट्सऐप पर निच ऑफ ट्रुथ काउंसलर के साथ साझा करने की अनुमति देता/देती हूं।',
       'guide.connect': 'व्हाट्सऐप पर जोड़ें',
+      'guide.continueWhatsapp': 'व्हाट्सऐप पर जारी रखें',
+      'guide.anotherQuestion': 'एक और सवाल भेजें',
       'guide.required': 'कृपया सभी फ़ील्ड भरें और अनुमति की पुष्टि करें।',
+      'guide.opened': 'व्हाट्सऐप खुल रहा है। अगर नहीं खुला, तो व्हाट्सऐप पर जारी रखें पर टैप करें।',
       'guide.whatsappIntro': 'निच ऑफ ट्रुथ वेबसाइट पूछताछ',
       'feedback.eyebrow': 'मुफ्त मलयालम कुरआन प्रति',
       'feedback.title': 'अपनी प्रतिक्रिया साझा करें',
@@ -242,7 +255,10 @@
       'guide.questionPlaceholder': 'നിങ്ങളുടെ ചോദ്യം ചുരുക്കത്തിൽ എഴുതുക.',
       'guide.consent': 'ഈ വിവരങ്ങൾ വാട്സ്ആപ്പിൽ നിച് ഓഫ് ട്രൂത്ത് കൗൺസിലറുമായി പങ്കിടാൻ ഞാൻ സമ്മതിക്കുന്നു.',
       'guide.connect': 'വാട്സ്ആപ്പിൽ ബന്ധപ്പെടുക',
+      'guide.continueWhatsapp': 'വാട്സ്ആപ്പിൽ തുടരുക',
+      'guide.anotherQuestion': 'മറ്റൊരു ചോദ്യം സമർപ്പിക്കുക',
       'guide.required': 'ദയവായി എല്ലാ വിവരങ്ങളും പൂരിപ്പിച്ച് സമ്മതം സ്ഥിരീകരിക്കുക.',
+      'guide.opened': 'വാട്സ്ആപ്പ് തുറക്കുന്നു. തുറന്നില്ലെങ്കിൽ, വാട്സ്ആപ്പിൽ തുടരുക എന്നത് ടാപ്പ് ചെയ്യുക.',
       'guide.whatsappIntro': 'നിച് ഓഫ് ട്രൂത്ത് വെബ്സൈറ്റ് അന്വേഷണം',
       'feedback.eyebrow': 'സൗജന്യ മലയാള ഖുർആൻ കോപ്പി',
       'feedback.title': 'നിങ്ങളുടെ പ്രതികരണം പങ്കിടുക',
@@ -341,7 +357,10 @@
       'guide.questionPlaceholder': 'اكتب سؤالك باختصار.',
       'guide.consent': 'أوافق على مشاركة هذه التفاصيل مع مستشار مشكاة الحق عبر واتساب.',
       'guide.connect': 'التواصل عبر واتساب',
+      'guide.continueWhatsapp': 'المتابعة على واتساب',
+      'guide.anotherQuestion': 'إرسال سؤال آخر',
       'guide.required': 'يرجى تعبئة جميع الحقول وتأكيد الموافقة.',
+      'guide.opened': 'يتم فتح واتساب الآن. إذا لم يفتح، اضغط على المتابعة على واتساب.',
       'guide.whatsappIntro': 'استفسار من موقع مشكاة الحق',
       'feedback.eyebrow': 'نسخة مجانية من القرآن بالمالايالامية',
       'feedback.title': 'شارك ملاحظاتك',
@@ -510,6 +529,8 @@
     const questionForm = document.getElementById('questionForm');
     const questionLanguage = document.getElementById('questionLanguage');
     const questionMessage = document.getElementById('questionMessage');
+    const questionWhatsappLink = document.getElementById('questionWhatsappLink');
+    const questionReset = document.getElementById('questionReset');
 
     if (!askQuestionButton || !questionWidget || !questionForm || !questionLanguage) return;
 
@@ -525,6 +546,7 @@
       closeQuestionWidget.addEventListener('click', function () {
         questionWidget.hidden = true;
         questionMessage.textContent = '';
+        resetQuestionHandoff();
       });
     }
 
@@ -551,9 +573,11 @@
 
       if (!details.name || !details.phone || !details.location || !details.profession || !details.intention || !details.question || !details.consent) {
         questionMessage.textContent = t('guide.required');
+        resetQuestionHandoff();
         return;
       }
 
+      const guide = selectGuide(details);
       const text = [
         t('guide.whatsappIntro'),
         '',
@@ -565,13 +589,39 @@
         `Intention: ${details.intention}`,
         `Question: ${details.question}`
       ].join('\n');
-      const whatsappUrl = `https://wa.me/${counselorWhatsAppNumber}?text=${encodeURIComponent(text)}`;
+      const whatsappUrl = `https://wa.me/${guide.phone}?text=${encodeURIComponent(text)}`;
+      questionWhatsappLink.href = whatsappUrl;
+      questionWhatsappLink.hidden = false;
+      questionReset.hidden = false;
+      questionMessage.textContent = t('guide.opened');
       window.open(whatsappUrl, '_blank', 'noopener');
-      questionWidget.hidden = true;
+    });
+
+    questionReset.addEventListener('click', function () {
       questionForm.reset();
       questionLanguage.value = currentLanguage;
       questionMessage.textContent = '';
+      resetQuestionHandoff();
     });
+
+    function resetQuestionHandoff() {
+      if (questionWhatsappLink) {
+        questionWhatsappLink.hidden = true;
+        questionWhatsappLink.href = '#';
+      }
+
+      if (questionReset) {
+        questionReset.hidden = true;
+      }
+    }
+  }
+
+  function selectGuide(details) {
+    const matchingGuide = guideNumbers.find(function (guide) {
+      return guide.languages.includes(currentLanguage) && guide.intentions.includes(details.intention);
+    });
+
+    return matchingGuide || guideNumbers[0];
   }
 
   function updateVoiceUi() {
