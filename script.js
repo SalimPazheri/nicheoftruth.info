@@ -738,12 +738,15 @@
     const birthExperience = document.getElementById('birthExperience');
     const closeBirthExperience = document.getElementById('closeBirthExperience');
     const birthAudio = document.getElementById('birthAudio');
+    const birthVideo = document.getElementById('birthVideo');
     const birthPanel = document.getElementById('birth');
     const birthAskButton = document.getElementById('birthAskButton');
     const askQuestionButton = document.getElementById('askQuestionButton');
     let fadeFrame = null;
+    let birthTimers = [];
+    let panelRevealed = false;
 
-    if (!birthNavLink || !birthExperience || !birthAudio || !birthPanel) return;
+    if (!birthNavLink || !birthExperience || !birthAudio || !birthVideo || !birthPanel) return;
 
     birthNavLink.addEventListener('click', function (event) {
       event.preventDefault();
@@ -780,32 +783,73 @@
     }
 
     function openBirthExperience() {
+      clearBirthTimers();
+      panelRevealed = false;
       birthExperience.hidden = false;
+      birthExperience.classList.remove('is-dimmed', 'is-video-visible', 'is-panel-visible');
       birthAudio.currentTime = 0;
-      birthAudio.volume = 0;
+      birthAudio.volume = 0.02;
+      birthVideo.pause();
+      birthVideo.currentTime = 0;
+
       birthAudio.play().then(function () {
-        fadeAudio(0.72, 2200);
+        fadeAudio(0.78, 9000);
       }).catch(function () {
         // The visual transition still works if the browser refuses audio playback.
       });
 
       window.requestAnimationFrame(function () {
         birthExperience.classList.add('is-visible');
-        birthPanel.focus();
       });
+
+      birthTimers.push(window.setTimeout(function () {
+        birthExperience.classList.add('is-dimmed');
+      }, 500));
+
+      birthTimers.push(window.setTimeout(startBirthVideo, 5200));
     }
 
     function closeBirthView() {
-      birthExperience.classList.remove('is-visible');
-      fadeAudio(0, 700, function () {
+      clearBirthTimers();
+      birthExperience.classList.remove('is-visible', 'is-dimmed', 'is-video-visible', 'is-panel-visible');
+      fadeAudio(0, 900, function () {
         birthAudio.pause();
         birthAudio.currentTime = 0;
       });
+      birthVideo.pause();
+      birthVideo.currentTime = 0;
       window.setTimeout(function () {
         if (!birthExperience.classList.contains('is-visible')) {
           birthExperience.hidden = true;
         }
-      }, 900);
+      }, 1200);
+    }
+
+    function startBirthVideo() {
+      birthExperience.classList.add('is-video-visible');
+      birthVideo.play().catch(function () {
+        birthTimers.push(window.setTimeout(revealBirthPanel, 1800));
+      });
+      const fallbackDelay = Number.isFinite(birthVideo.duration) && birthVideo.duration > 0
+        ? (birthVideo.duration * 1000) + 1500
+        : 18000;
+      birthTimers.push(window.setTimeout(revealBirthPanel, fallbackDelay));
+    }
+
+    birthVideo.addEventListener('ended', revealBirthPanel);
+
+    function revealBirthPanel() {
+      if (panelRevealed || birthExperience.hidden) return;
+      panelRevealed = true;
+      birthExperience.classList.add('is-panel-visible');
+      birthPanel.focus();
+    }
+
+    function clearBirthTimers() {
+      birthTimers.forEach(function (timer) {
+        window.clearTimeout(timer);
+      });
+      birthTimers = [];
     }
 
     function fadeAudio(targetVolume, duration, onComplete) {
