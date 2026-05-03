@@ -48,9 +48,11 @@
   const form = document.getElementById('feedbackForm');
   if (form) {
     const thanks = document.getElementById('thanks');
+    const thanksTitle = document.getElementById('thanksTitle');
     const voiceButton = document.getElementById('voiceButton');
     const voiceStatus = document.getElementById('voiceStatus');
     const message = document.getElementById('message');
+    const name = document.getElementById('name');
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     let recognition = null;
     let listening = false;
@@ -105,13 +107,18 @@
       event.preventDefault();
 
       const entry = {
-        name: document.getElementById('name').value.trim(),
+        name: name.value.trim(),
         phone: document.getElementById('phone').value.trim(),
         district: document.getElementById('district').value,
         message: message.value.trim(),
         source: 'nfc_or_web',
         status: 'new'
       };
+
+      if (!entry.name) {
+        name.focus();
+        return;
+      }
 
       if (!entry.message) {
         message.focus();
@@ -150,6 +157,7 @@
       }
 
       form.hidden = true;
+      thanksTitle.textContent = `Thanks, ${entry.name}.`;
       thanks.hidden = false;
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
