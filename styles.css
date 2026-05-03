@@ -305,6 +305,91 @@ h1 {
   color: #fff;
 }
 
+.chat-widget {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 10;
+  width: min(420px, calc(100vw - 32px));
+  max-height: min(720px, calc(100vh - 44px));
+  overflow-y: auto;
+  border: 1px solid rgba(245, 210, 125, 0.36);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+}
+
+.chat-widget__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  background: linear-gradient(135deg, #0a473b, #08282d);
+  color: #fff;
+  padding: 18px;
+}
+
+.chat-widget__header p,
+.chat-widget__header h2 {
+  margin: 0;
+}
+
+.chat-widget__header p {
+  color: #f5d27d;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.chat-widget__header h2 {
+  margin-top: 6px;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.chat-widget__close {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+}
+
+.chat-widget__intro {
+  margin: 0;
+  padding: 18px 18px 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.chat-form {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+}
+
+.checkbox-field {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  align-items: start;
+  gap: 10px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.checkbox-field input {
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+}
+
 .page {
   min-height: 100vh;
   background:
@@ -559,5 +644,10 @@ td {
 
   .lead {
     font-size: 16px;
+  }
+
+  .chat-widget {
+    right: 16px;
+    bottom: 16px;
   }
 }

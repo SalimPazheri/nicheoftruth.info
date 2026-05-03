@@ -4,6 +4,7 @@
   const supabaseUrl = 'https://nihkdysxoplpegwqlayi.supabase.co';
   const supabaseKey = 'sb_publishable_-lx2myS6ubyMTBpKZ5eS3g_fFIbs_of';
   const submitTimeoutMs = 8000;
+  const counselorWhatsAppNumber = '918157815279';
   const supabaseClient = window.supabase
     ? window.supabase.createClient(supabaseUrl, supabaseKey)
     : null;
@@ -25,6 +26,26 @@
       'home.lead': 'Niche of Truth is a welcoming space for non-Muslim visitors to ask questions about Islam, request guidance, and share feedback after receiving a free Malayalam translation of the Holy Quran.',
       'home.feedbackCta': 'Leave Quran Feedback',
       'home.askCta': 'Ask a Question',
+      'guide.eyebrow': 'Friendly guide',
+      'guide.title': 'Ask a Question',
+      'guide.intro': 'Share a few details so we can connect you with the right counselor.',
+      'guide.location': 'Location',
+      'guide.locationPlaceholder': 'City or district',
+      'guide.profession': 'Profession',
+      'guide.professionPlaceholder': 'Your profession',
+      'guide.intention': 'Intention',
+      'guide.intentionSelect': 'Select intention',
+      'guide.intentLearn': 'To learn',
+      'guide.intentEmbrace': 'To embrace Islam',
+      'guide.intentCounseling': 'Need counseling',
+      'guide.intentQuran': 'Need Quran copy',
+      'guide.intentOther': 'Other question',
+      'guide.question': 'Question',
+      'guide.questionPlaceholder': 'Type your question briefly.',
+      'guide.consent': 'I agree to share these details with a Niche of Truth counselor on WhatsApp.',
+      'guide.connect': 'Connect on WhatsApp',
+      'guide.required': 'Please fill all fields and confirm consent.',
+      'guide.whatsappIntro': 'Niche of Truth website enquiry',
       'feedback.eyebrow': 'Free Malayalam Quran copy',
       'feedback.title': 'Share your feedback',
       'feedback.intro': 'You can type your message or use voice input. Your feedback helps us improve how we serve visitors across Kerala.',
@@ -104,6 +125,26 @@
       'home.lead': 'निच ऑफ ट्रुथ गैर-मुस्लिम आगंतुकों के लिए इस्लाम के बारे में सवाल पूछने, मार्गदर्शन मांगने और पवित्र कुरआन के मुफ्त मलयालम अनुवाद को प्राप्त करने के बाद प्रतिक्रिया साझा करने की एक स्वागतपूर्ण जगह है।',
       'home.feedbackCta': 'कुरआन प्रतिक्रिया दें',
       'home.askCta': 'सवाल पूछें',
+      'guide.eyebrow': 'मित्रवत मार्गदर्शक',
+      'guide.title': 'सवाल पूछें',
+      'guide.intro': 'कुछ विवरण साझा करें ताकि हम आपको सही काउंसलर से जोड़ सकें।',
+      'guide.location': 'स्थान',
+      'guide.locationPlaceholder': 'शहर या जिला',
+      'guide.profession': 'पेशा',
+      'guide.professionPlaceholder': 'आपका पेशा',
+      'guide.intention': 'उद्देश्य',
+      'guide.intentionSelect': 'उद्देश्य चुनें',
+      'guide.intentLearn': 'सीखना चाहता/चाहती हूं',
+      'guide.intentEmbrace': 'इस्लाम अपनाना चाहता/चाहती हूं',
+      'guide.intentCounseling': 'काउंसलिंग चाहिए',
+      'guide.intentQuran': 'कुरआन कॉपी चाहिए',
+      'guide.intentOther': 'अन्य सवाल',
+      'guide.question': 'सवाल',
+      'guide.questionPlaceholder': 'अपना सवाल संक्षेप में लिखें।',
+      'guide.consent': 'मैं इन विवरणों को व्हाट्सऐप पर निच ऑफ ट्रुथ काउंसलर के साथ साझा करने की अनुमति देता/देती हूं।',
+      'guide.connect': 'व्हाट्सऐप पर जोड़ें',
+      'guide.required': 'कृपया सभी फ़ील्ड भरें और अनुमति की पुष्टि करें।',
+      'guide.whatsappIntro': 'निच ऑफ ट्रुथ वेबसाइट पूछताछ',
       'feedback.eyebrow': 'मुफ्त मलयालम कुरआन प्रति',
       'feedback.title': 'अपनी प्रतिक्रिया साझा करें',
       'feedback.intro': 'आप अपना संदेश टाइप कर सकते हैं या वॉइस इनपुट का उपयोग कर सकते हैं। आपकी प्रतिक्रिया हमें केरल के आगंतुकों की बेहतर सेवा करने में मदद करती है।',
@@ -183,6 +224,26 @@
       'home.lead': 'ഇസ്ലാമിനെക്കുറിച്ച് ചോദ്യങ്ങൾ ചോദിക്കാനും മാർഗനിർദേശം തേടാനും വിശുദ്ധ ഖുർആന്റെ സൗജന്യ മലയാള വിവർത്തനം ലഭിച്ച ശേഷം പ്രതികരണം പങ്കിടാനും മുസ്ലിം അല്ലാത്ത സന്ദർശകർക്ക് സ്വാഗതം ചെയ്യുന്ന ഇടമാണ് നിച് ഓഫ് ട്രൂത്ത്.',
       'home.feedbackCta': 'ഖുർആൻ പ്രതികരണം നൽകുക',
       'home.askCta': 'ചോദ്യം ചോദിക്കുക',
+      'guide.eyebrow': 'സൗഹൃദ ഗൈഡ്',
+      'guide.title': 'ചോദ്യം ചോദിക്കുക',
+      'guide.intro': 'ശരിയായ കൗൺസിലറുമായി ബന്ധിപ്പിക്കാൻ കുറച്ച് വിവരങ്ങൾ പങ്കിടുക.',
+      'guide.location': 'സ്ഥലം',
+      'guide.locationPlaceholder': 'നഗരം അല്ലെങ്കിൽ ജില്ല',
+      'guide.profession': 'തൊഴിൽ',
+      'guide.professionPlaceholder': 'നിങ്ങളുടെ തൊഴിൽ',
+      'guide.intention': 'ഉദ്ദേശ്യം',
+      'guide.intentionSelect': 'ഉദ്ദേശ്യം തിരഞ്ഞെടുക്കുക',
+      'guide.intentLearn': 'പഠിക്കാൻ',
+      'guide.intentEmbrace': 'ഇസ്ലാം സ്വീകരിക്കാൻ',
+      'guide.intentCounseling': 'കൗൺസിലിംഗ് വേണം',
+      'guide.intentQuran': 'ഖുർആൻ കോപ്പി വേണം',
+      'guide.intentOther': 'മറ്റൊരു ചോദ്യം',
+      'guide.question': 'ചോദ്യം',
+      'guide.questionPlaceholder': 'നിങ്ങളുടെ ചോദ്യം ചുരുക്കത്തിൽ എഴുതുക.',
+      'guide.consent': 'ഈ വിവരങ്ങൾ വാട്സ്ആപ്പിൽ നിച് ഓഫ് ട്രൂത്ത് കൗൺസിലറുമായി പങ്കിടാൻ ഞാൻ സമ്മതിക്കുന്നു.',
+      'guide.connect': 'വാട്സ്ആപ്പിൽ ബന്ധപ്പെടുക',
+      'guide.required': 'ദയവായി എല്ലാ വിവരങ്ങളും പൂരിപ്പിച്ച് സമ്മതം സ്ഥിരീകരിക്കുക.',
+      'guide.whatsappIntro': 'നിച് ഓഫ് ട്രൂത്ത് വെബ്സൈറ്റ് അന്വേഷണം',
       'feedback.eyebrow': 'സൗജന്യ മലയാള ഖുർആൻ കോപ്പി',
       'feedback.title': 'നിങ്ങളുടെ പ്രതികരണം പങ്കിടുക',
       'feedback.intro': 'നിങ്ങൾക്ക് സന്ദേശം ടൈപ്പ് ചെയ്യുകയോ വോയ്സ് ഇൻപുട്ട് ഉപയോഗിക്കുകയോ ചെയ്യാം. കേരളത്തിലുടനീളമുള്ള സന്ദർശകരെ കൂടുതൽ മെച്ചമായി സേവിക്കാൻ നിങ്ങളുടെ പ്രതികരണം ഞങ്ങളെ സഹായിക്കുന്നു.',
@@ -262,6 +323,26 @@
       'home.lead': 'مشكاة الحق مساحة ترحيبية للزوار غير المسلمين لطرح أسئلة عن الإسلام، وطلب التوجيه، ومشاركة الملاحظات بعد استلام ترجمة مالايالامية مجانية للقرآن الكريم.',
       'home.feedbackCta': 'أرسل ملاحظات القرآن',
       'home.askCta': 'اطرح سؤالا',
+      'guide.eyebrow': 'دليل ودود',
+      'guide.title': 'اطرح سؤالا',
+      'guide.intro': 'شارك بعض التفاصيل حتى نوصلك بالمستشار المناسب.',
+      'guide.location': 'الموقع',
+      'guide.locationPlaceholder': 'المدينة أو المنطقة',
+      'guide.profession': 'المهنة',
+      'guide.professionPlaceholder': 'مهنتك',
+      'guide.intention': 'النية',
+      'guide.intentionSelect': 'اختر النية',
+      'guide.intentLearn': 'للتعلم',
+      'guide.intentEmbrace': 'لاعتناق الإسلام',
+      'guide.intentCounseling': 'أحتاج إلى استشارة',
+      'guide.intentQuran': 'أحتاج نسخة من القرآن',
+      'guide.intentOther': 'سؤال آخر',
+      'guide.question': 'السؤال',
+      'guide.questionPlaceholder': 'اكتب سؤالك باختصار.',
+      'guide.consent': 'أوافق على مشاركة هذه التفاصيل مع مستشار مشكاة الحق عبر واتساب.',
+      'guide.connect': 'التواصل عبر واتساب',
+      'guide.required': 'يرجى تعبئة جميع الحقول وتأكيد الموافقة.',
+      'guide.whatsappIntro': 'استفسار من موقع مشكاة الحق',
       'feedback.eyebrow': 'نسخة مجانية من القرآن بالمالايالامية',
       'feedback.title': 'شارك ملاحظاتك',
       'feedback.intro': 'يمكنك كتابة رسالتك أو استخدام الإدخال الصوتي. تساعدنا ملاحظاتك على تحسين خدمتنا للزوار في كيرلا.',
@@ -383,6 +464,11 @@
       languageSelect.value = currentLanguage;
     }
 
+    const questionLanguage = document.getElementById('questionLanguage');
+    if (questionLanguage) {
+      questionLanguage.value = currentLanguage;
+    }
+
     updateDocumentTitle();
   }
 
@@ -414,6 +500,77 @@
       if (entriesBody) {
         renderEntries(lastRenderedEntries);
       }
+    });
+  }
+
+  function setupQuestionWidget() {
+    const askQuestionButton = document.getElementById('askQuestionButton');
+    const questionWidget = document.getElementById('questionWidget');
+    const closeQuestionWidget = document.getElementById('closeQuestionWidget');
+    const questionForm = document.getElementById('questionForm');
+    const questionLanguage = document.getElementById('questionLanguage');
+    const questionMessage = document.getElementById('questionMessage');
+
+    if (!askQuestionButton || !questionWidget || !questionForm || !questionLanguage) return;
+
+    questionLanguage.value = currentLanguage;
+
+    askQuestionButton.addEventListener('click', function () {
+      questionWidget.hidden = false;
+      questionLanguage.value = currentLanguage;
+      document.getElementById('questionName').focus();
+    });
+
+    if (closeQuestionWidget) {
+      closeQuestionWidget.addEventListener('click', function () {
+        questionWidget.hidden = true;
+        questionMessage.textContent = '';
+      });
+    }
+
+    questionLanguage.addEventListener('change', function () {
+      currentLanguage = translations[questionLanguage.value] ? questionLanguage.value : 'en';
+      saveLanguage(currentLanguage);
+      applyLanguage();
+      updateVoiceUi();
+    });
+
+    questionForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const details = {
+        language: questionLanguage.options[questionLanguage.selectedIndex].text,
+        name: document.getElementById('questionName').value.trim(),
+        phone: document.getElementById('questionPhone').value.trim(),
+        location: document.getElementById('questionLocation').value.trim(),
+        profession: document.getElementById('questionProfession').value.trim(),
+        intention: document.getElementById('questionIntention').value,
+        question: document.getElementById('questionText').value.trim(),
+        consent: document.getElementById('questionConsent').checked
+      };
+
+      if (!details.name || !details.phone || !details.location || !details.profession || !details.intention || !details.question || !details.consent) {
+        questionMessage.textContent = t('guide.required');
+        return;
+      }
+
+      const text = [
+        t('guide.whatsappIntro'),
+        '',
+        `Name: ${details.name}`,
+        `Mobile: ${details.phone}`,
+        `Location: ${details.location}`,
+        `Profession: ${details.profession}`,
+        `Language: ${details.language}`,
+        `Intention: ${details.intention}`,
+        `Question: ${details.question}`
+      ].join('\n');
+      const whatsappUrl = `https://wa.me/${counselorWhatsAppNumber}?text=${encodeURIComponent(text)}`;
+      window.open(whatsappUrl, '_blank', 'noopener');
+      questionWidget.hidden = true;
+      questionForm.reset();
+      questionLanguage.value = currentLanguage;
+      questionMessage.textContent = '';
     });
   }
 
@@ -619,6 +776,7 @@
   const loginForm = document.getElementById('loginForm');
   applyLanguage();
   setupLanguageSelector();
+  setupQuestionWidget();
   updateVoiceUi();
 
   if (loginForm) {
