@@ -236,10 +236,7 @@
       if (supabaseClient) {
         await supabaseClient.auth.signOut();
       }
-      entriesPanel.hidden = true;
-      loginPanel.hidden = false;
-      loginForm.reset();
-      loginMessage.textContent = '';
+      window.location.href = './index.html';
     });
 
     async function setupAdminPage() {
