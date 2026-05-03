@@ -2,6 +2,7 @@
   const storageKey = 'nicheoftruth_feedback_entries';
   const supabaseUrl = 'https://nihkdysxoplpegwqlayi.supabase.co';
   const supabaseKey = 'sb_publishable_-lx2myS6ubyMTBpKZ5eS3g_fFIbs_of';
+  const submitTimeoutMs = 8000;
   const supabaseClient = window.supabase
     ? window.supabase.createClient(supabaseUrl, supabaseKey)
     : null;
@@ -15,9 +16,33 @@
   }
 
   function saveEntry(entry) {
-    const entries = getEntries();
-    entries.unshift(entry);
-    localStorage.setItem(storageKey, JSON.stringify(entries));
+    try {
+      const entries = getEntries();
+      entries.unshift(entry);
+      localStorage.setItem(storageKey, JSON.stringify(entries));
+    } catch (error) {
+      console.warn('Local feedback backup failed:', error);
+    }
+  }
+
+  function withTimeout(promise, timeoutMs) {
+    let timeoutId;
+    const timeout = new Promise(function (_, reject) {
+      timeoutId = window.setTimeout(function () {
+        reject(new Error('Submit timed out. Saved locally for review.'));
+      }, timeoutMs);
+    });
+
+    return Promise.race([promise, timeout]).then(
+      function (result) {
+        window.clearTimeout(timeoutId);
+        return result;
+      },
+      function (error) {
+        window.clearTimeout(timeoutId);
+        throw error;
+      }
+    );
   }
 
   const form = document.getElementById('feedbackForm');
@@ -100,9 +125,12 @@
       try {
         if (!supabaseClient) throw new Error('Supabase client is unavailable');
 
-        const { error } = await supabaseClient
-          .from('feedback_entries')
-          .insert(entry);
+        const { error } = await withTimeout(
+          supabaseClient
+            .from('feedback_entries')
+            .insert(entry),
+          submitTimeoutMs
+        );
 
         if (error) throw error;
 
