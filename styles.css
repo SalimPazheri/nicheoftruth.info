@@ -36,14 +36,29 @@ a {
   color: #fff;
   overflow: hidden;
   background:
-    linear-gradient(90deg, rgba(7, 22, 26, 0.88), rgba(7, 22, 26, 0.42), rgba(7, 22, 26, 0.72)),
+    linear-gradient(90deg, rgba(7, 22, 26, 0.92), rgba(7, 22, 26, 0.48), rgba(7, 22, 26, 0.76)),
     url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=2400&q=85") center / cover;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(7, 22, 26, 0) 0%, rgba(7, 22, 26, 0.18) 42%, rgba(7, 22, 26, 0.86) 100%),
+    url("./assets/quran-malayalam-cover.jpg") right center / min(64vw, 860px) auto no-repeat;
+  filter: saturate(1.06) contrast(1.04);
+  opacity: 0.9;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.22) 28%, #000 52%);
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.22) 28%, #000 52%);
 }
 
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.52));
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.38)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.52));
 }
 
 .nav,
@@ -290,6 +305,23 @@ h1 {
   font-size: 13px;
 }
 
+.feedback-banner {
+  overflow: hidden;
+  aspect-ratio: 16 / 7;
+  margin: 0 0 28px;
+  border-radius: 8px;
+  background: #091316;
+  box-shadow: 0 16px 40px rgba(13, 27, 30, 0.14);
+}
+
+.feedback-banner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .feedback-form {
   display: grid;
   gap: 18px;
@@ -456,6 +488,19 @@ td {
   .hero__content {
     margin-top: 72px;
     padding-right: 0;
+  }
+
+  .hero::before {
+    background:
+      linear-gradient(180deg, rgba(7, 22, 26, 0.04), rgba(7, 22, 26, 0.72)),
+      url("./assets/quran-malayalam-cover.jpg") center top / 118vw auto no-repeat;
+    opacity: 0.38;
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 62%);
+    mask-image: linear-gradient(180deg, #000 0%, transparent 62%);
+  }
+
+  .feedback-banner {
+    aspect-ratio: 4 / 3;
   }
 
   [dir="rtl"] .hero__content {
