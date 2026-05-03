@@ -79,7 +79,7 @@ a {
 
 .brand__mark--image {
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: 0;
   background: #070707;
 }
 
