@@ -45,10 +45,16 @@
     );
   }
 
+  function closeFeedbackPage() {
+    window.open('', '_self');
+    window.close();
+  }
+
   const form = document.getElementById('feedbackForm');
   if (form) {
     const thanks = document.getElementById('thanks');
     const thanksTitle = document.getElementById('thanksTitle');
+    const closePage = document.getElementById('closePage');
     const voiceButton = document.getElementById('voiceButton');
     const voiceStatus = document.getElementById('voiceStatus');
     const message = document.getElementById('message');
@@ -102,6 +108,10 @@
       if (listening) recognition.stop();
       else recognition.start();
     });
+
+    if (closePage) {
+      closePage.addEventListener('click', closeFeedbackPage);
+    }
 
     form.addEventListener('submit', async function (event) {
       event.preventDefault();
@@ -160,43 +170,145 @@
       thanksTitle.textContent = `Thanks, ${entry.name}.`;
       thanks.hidden = false;
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.setTimeout(closeFeedbackPage, 2500);
     });
   }
 
   const entriesBody = document.getElementById('entriesBody');
-  if (entriesBody) {
-    loadEntries();
+  const loginForm = document.getElementById('loginForm');
+  if (loginForm) {
+    const loginPanel = document.getElementById('loginPanel');
+    const entriesPanel = document.getElementById('entriesPanel');
+    const loginMessage = document.getElementById('loginMessage');
+    const entriesStatus = document.getElementById('entriesStatus');
+    const entriesFilters = document.getElementById('entriesFilters');
+    const dateFilter = document.getElementById('dateFilter');
+    const districtFilter = document.getElementById('districtFilter');
+    const logoutButton = document.getElementById('logoutButton');
+    const clearFilters = document.getElementById('clearFilters');
 
-    document.getElementById('clearEntries').addEventListener('click', function () {
-      localStorage.removeItem(storageKey);
-      window.location.reload();
-    });
-  }
+    setupAdminPage();
 
-  async function loadEntries() {
-    let entries = [];
+    loginForm.addEventListener('submit', async function (event) {
+      event.preventDefault();
 
-    try {
-      if (supabaseClient) {
-        const { data, error } = await supabaseClient
-          .from('feedback_entries')
-          .select('created_at, name, phone, district, message')
-          .order('created_at', { ascending: false })
-          .limit(100);
+      if (!supabaseClient) {
+        loginMessage.textContent = 'Login is unavailable. Please try again later.';
+        return;
+      }
+
+      const loginButton = loginForm.querySelector('[type="submit"]');
+      loginButton.disabled = true;
+      loginButton.textContent = 'Logging in...';
+      loginMessage.textContent = '';
+
+      try {
+        const { error } = await supabaseClient.auth.signInWithPassword({
+          email: document.getElementById('loginEmail').value.trim(),
+          password: document.getElementById('loginPassword').value
+        });
 
         if (error) throw error;
-        entries = data || [];
+        await showEntries();
+      } catch (error) {
+        loginMessage.textContent = error.message || 'Login failed. Please check the email and password.';
+      } finally {
+        loginButton.disabled = false;
+        loginButton.textContent = 'Login';
       }
-    } catch (error) {
-      console.error('Feedback load failed:', error);
-      entries = getEntries();
+    });
+
+    entriesFilters.addEventListener('submit', function (event) {
+      event.preventDefault();
+      loadEntries();
+    });
+
+    dateFilter.addEventListener('change', loadEntries);
+    districtFilter.addEventListener('change', loadEntries);
+
+    clearFilters.addEventListener('click', function () {
+      dateFilter.value = '';
+      districtFilter.value = '';
+      loadEntries();
+    });
+
+    logoutButton.addEventListener('click', async function () {
+      if (supabaseClient) {
+        await supabaseClient.auth.signOut();
+      }
+      entriesPanel.hidden = true;
+      loginPanel.hidden = false;
+      loginForm.reset();
+      loginMessage.textContent = '';
+    });
+
+    async function setupAdminPage() {
+      if (!supabaseClient) {
+        loginMessage.textContent = 'Login is unavailable. Please try again later.';
+        return;
+      }
+
+      const { data } = await supabaseClient.auth.getSession();
+      if (data.session) {
+        await showEntries();
+      }
     }
 
+    async function showEntries() {
+      loginPanel.hidden = true;
+      entriesPanel.hidden = false;
+      await loadEntries();
+    }
+
+    async function loadEntries() {
+      let query = supabaseClient
+        .from('feedback_entries')
+        .select('created_at, name, phone, district, message')
+        .order('created_at', { ascending: false })
+        .limit(200);
+
+      if (dateFilter.value) {
+        const startDate = new Date(`${dateFilter.value}T00:00:00`);
+        const endDate = new Date(startDate);
+        endDate.setDate(startDate.getDate() + 1);
+        query = query
+          .gte('created_at', startDate.toISOString())
+          .lt('created_at', endDate.toISOString());
+      }
+
+      if (districtFilter.value) {
+        query = query.eq('district', districtFilter.value);
+      }
+
+      entriesStatus.textContent = 'Loading feedback...';
+      entriesBody.innerHTML = '<tr><td colspan="5">Loading feedback...</td></tr>';
+
+      try {
+        const { data, error } = await query;
+        if (error) throw error;
+
+        renderEntries(data || []);
+        entriesStatus.textContent = data && data.length
+          ? `${data.length} feedback entr${data.length === 1 ? 'y' : 'ies'} found.`
+          : 'No feedback entries found.';
+      } catch (error) {
+        console.error('Feedback load failed:', error);
+        entriesStatus.textContent = error.message || 'Unable to load feedback entries.';
+        entriesBody.innerHTML = '<tr><td colspan="5">Unable to load feedback entries.</td></tr>';
+      }
+    }
+  }
+
+  if (entriesBody && !loginForm) {
+    renderEntries(getEntries());
+  }
+
+  function renderEntries(entries) {
     entriesBody.innerHTML = entries.length
       ? entries.map(function (entry) {
           return `
             <tr>
-              <td>${new Date(entry.created_at).toLocaleString()}</td>
+              <td>${formatDate(entry.created_at)}</td>
               <td>${escapeHtml(entry.name || '-')}</td>
               <td>${escapeHtml(entry.phone || '-')}</td>
               <td>${escapeHtml(entry.district || '-')}</td>
@@ -205,6 +317,11 @@
           `;
         }).join('')
       : '<tr><td colspan="5">No feedback entries yet.</td></tr>';
+  }
+
+  function formatDate(value) {
+    if (!value) return '-';
+    return new Date(value).toLocaleString();
   }
 
   function escapeHtml(value) {
