@@ -10,6 +10,7 @@
   const translations = {
     en: {
       'brand.name': 'Niche of Truth',
+      'brand.tagline': 'Guiding to Salvation',
       'brand.feedback': 'Quran feedback',
       'brand.admin': 'Feedback admin',
       'language.label': 'Language',
@@ -17,7 +18,7 @@
       'home.eyebrow': 'For sincere questions, calm answers, and open hearts',
       'home.title': 'Ask freely. Reflect deeply. Discover Islam with clarity.',
       'home.lead': 'Niche of Truth is a welcoming space for non-Muslim visitors to ask questions about Islam, request guidance, and share feedback after receiving a free Malayalam translation of the Holy Quran.',
-      'home.feedbackCta': 'Guiding to Salvation',
+      'home.feedbackCta': 'Leave Quran Feedback',
       'home.askCta': 'Ask a Question',
       'feedback.eyebrow': 'Free Malayalam Quran copy',
       'feedback.title': 'Share your feedback',
@@ -83,6 +84,7 @@
     },
     hi: {
       'brand.name': 'निच ऑफ ट्रुथ',
+      'brand.tagline': 'मोक्ष की राह दिखाना',
       'brand.feedback': 'कुरआन प्रतिक्रिया',
       'brand.admin': 'प्रतिक्रिया एडमिन',
       'language.label': 'भाषा',
@@ -90,7 +92,7 @@
       'home.eyebrow': 'सच्चे सवाल, शांत जवाब और खुले दिल',
       'home.title': 'खुलकर पूछें। गहराई से सोचें। स्पष्टता के साथ इस्लाम को जानें।',
       'home.lead': 'निच ऑफ ट्रुथ गैर-मुस्लिम आगंतुकों के लिए इस्लाम के बारे में सवाल पूछने, मार्गदर्शन मांगने और पवित्र कुरआन के मुफ्त मलयालम अनुवाद को प्राप्त करने के बाद प्रतिक्रिया साझा करने की एक स्वागतपूर्ण जगह है।',
-      'home.feedbackCta': 'मोक्ष की राह दिखाना',
+      'home.feedbackCta': 'कुरआन प्रतिक्रिया दें',
       'home.askCta': 'सवाल पूछें',
       'feedback.eyebrow': 'मुफ्त मलयालम कुरआन प्रति',
       'feedback.title': 'अपनी प्रतिक्रिया साझा करें',
@@ -156,6 +158,7 @@
     },
     ml: {
       'brand.name': 'നിച് ഓഫ് ട്രൂത്ത്',
+      'brand.tagline': 'രക്ഷയിലേക്ക് നയിക്കുന്നു',
       'brand.feedback': 'ഖുർആൻ പ്രതികരണം',
       'brand.admin': 'പ്രതികരണ അഡ്മിൻ',
       'language.label': 'ഭാഷ',
@@ -163,7 +166,7 @@
       'home.eyebrow': 'സത്യസന്ധമായ ചോദ്യങ്ങൾക്കും ശാന്തമായ ഉത്തരങ്ങൾക്കും തുറന്ന ഹൃദയങ്ങൾക്കും',
       'home.title': 'സ്വതന്ത്രമായി ചോദിക്കുക. ആഴത്തിൽ ചിന്തിക്കുക. വ്യക്തതയോടെ ഇസ്ലാം അറിയുക.',
       'home.lead': 'ഇസ്ലാമിനെക്കുറിച്ച് ചോദ്യങ്ങൾ ചോദിക്കാനും മാർഗനിർദേശം തേടാനും വിശുദ്ധ ഖുർആന്റെ സൗജന്യ മലയാള വിവർത്തനം ലഭിച്ച ശേഷം പ്രതികരണം പങ്കിടാനും മുസ്ലിം അല്ലാത്ത സന്ദർശകർക്ക് സ്വാഗതം ചെയ്യുന്ന ഇടമാണ് നിച് ഓഫ് ട്രൂത്ത്.',
-      'home.feedbackCta': 'രക്ഷയിലേക്ക് നയിക്കുന്നു',
+      'home.feedbackCta': 'ഖുർആൻ പ്രതികരണം നൽകുക',
       'home.askCta': 'ചോദ്യം ചോദിക്കുക',
       'feedback.eyebrow': 'സൗജന്യ മലയാള ഖുർആൻ കോപ്പി',
       'feedback.title': 'നിങ്ങളുടെ പ്രതികരണം പങ്കിടുക',
@@ -229,6 +232,7 @@
     },
     ar: {
       'brand.name': 'مكان الحقيقة',
+      'brand.tagline': 'الهداية إلى النجاة',
       'brand.feedback': 'ملاحظات القرآن',
       'brand.admin': 'إدارة الملاحظات',
       'language.label': 'اللغة',
@@ -236,7 +240,7 @@
       'home.eyebrow': 'لأسئلة صادقة، وإجابات هادئة، وقلوب منفتحة',
       'home.title': 'اسأل بحرية. تأمل بعمق. تعرّف إلى الإسلام بوضوح.',
       'home.lead': 'مكان الحقيقة مساحة ترحيبية للزوار غير المسلمين لطرح أسئلة عن الإسلام، وطلب التوجيه، ومشاركة الملاحظات بعد استلام ترجمة مالايالامية مجانية للقرآن الكريم.',
-      'home.feedbackCta': 'الهداية إلى النجاة',
+      'home.feedbackCta': 'أرسل ملاحظات القرآن',
       'home.askCta': 'اطرح سؤالا',
       'feedback.eyebrow': 'نسخة مجانية من القرآن بالمالايالامية',
       'feedback.title': 'شارك ملاحظاتك',
