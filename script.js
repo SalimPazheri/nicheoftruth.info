@@ -59,6 +59,8 @@
     const voiceStatus = document.getElementById('voiceStatus');
     const message = document.getElementById('message');
     const name = document.getElementById('name');
+    const phone = document.getElementById('phone');
+    const district = document.getElementById('district');
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     let recognition = null;
     let listening = false;
@@ -118,8 +120,8 @@
 
       const entry = {
         name: name.value.trim(),
-        phone: document.getElementById('phone').value.trim(),
-        district: document.getElementById('district').value,
+        phone: phone.value.trim(),
+        district: district.value,
         message: message.value.trim(),
         source: 'nfc_or_web',
         status: 'new'
@@ -127,6 +129,16 @@
 
       if (!entry.name) {
         name.focus();
+        return;
+      }
+
+      if (!entry.phone) {
+        phone.focus();
+        return;
+      }
+
+      if (!entry.district) {
+        district.focus();
         return;
       }
 
