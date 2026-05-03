@@ -15,70 +15,78 @@
           <img src="./assets/nicheoftruth-logo.png" alt="" aria-hidden="true">
         </span>
         <span>
-          <strong>Niche of Truth</strong>
-          <small>Quran feedback</small>
+          <strong data-i18n="brand.name">Niche of Truth</strong>
+          <small data-i18n="brand.feedback">Quran feedback</small>
         </span>
       </a>
+      <label class="language-control language-control--dark">
+        <span data-i18n="language.label">Language</span>
+        <select id="languageSelect" aria-label="Language">
+          <option value="en">English</option>
+          <option value="hi">Hindi</option>
+          <option value="ar">Arabic</option>
+        </select>
+      </label>
     </header>
 
     <main class="form-shell">
       <section class="panel">
-        <p class="eyebrow eyebrow--dark">Free Malayalam Quran copy</p>
-        <h1>Share your feedback</h1>
-        <p class="muted">
+        <p class="eyebrow eyebrow--dark" data-i18n="feedback.eyebrow">Free Malayalam Quran copy</p>
+        <h1 data-i18n="feedback.title">Share your feedback</h1>
+        <p class="muted" data-i18n="feedback.intro">
           You can type your message or use voice input. Your feedback helps us improve how we serve visitors across Kerala.
         </p>
 
         <form id="feedbackForm" class="feedback-form">
           <label>
-            Name
-            <input id="name" name="name" autocomplete="name" placeholder="Your name" required>
+            <span data-i18n="feedback.name">Name</span>
+            <input id="name" name="name" autocomplete="name" placeholder="Your name" data-i18n-placeholder="feedback.namePlaceholder" required>
           </label>
 
           <label>
-            Mobile or WhatsApp
+            <span data-i18n="feedback.phone">Mobile or WhatsApp</span>
             <input id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="+91..." required>
           </label>
 
           <label>
-            District
+            <span data-i18n="feedback.district">District</span>
             <select id="district" name="district" required>
-              <option value="">Select district</option>
-              <option>Thiruvananthapuram</option>
-              <option>Kollam</option>
-              <option>Pathanamthitta</option>
-              <option>Alappuzha</option>
-              <option>Kottayam</option>
-              <option>Idukki</option>
-              <option>Ernakulam</option>
-              <option>Thrissur</option>
-              <option>Palakkad</option>
-              <option>Malappuram</option>
-              <option>Kozhikode</option>
-              <option>Wayanad</option>
-              <option>Kannur</option>
-              <option>Kasaragod</option>
+              <option value="" data-i18n="district.select">Select district</option>
+              <option value="Thiruvananthapuram" data-i18n="district.thiruvananthapuram">Thiruvananthapuram</option>
+              <option value="Kollam" data-i18n="district.kollam">Kollam</option>
+              <option value="Pathanamthitta" data-i18n="district.pathanamthitta">Pathanamthitta</option>
+              <option value="Alappuzha" data-i18n="district.alappuzha">Alappuzha</option>
+              <option value="Kottayam" data-i18n="district.kottayam">Kottayam</option>
+              <option value="Idukki" data-i18n="district.idukki">Idukki</option>
+              <option value="Ernakulam" data-i18n="district.ernakulam">Ernakulam</option>
+              <option value="Thrissur" data-i18n="district.thrissur">Thrissur</option>
+              <option value="Palakkad" data-i18n="district.palakkad">Palakkad</option>
+              <option value="Malappuram" data-i18n="district.malappuram">Malappuram</option>
+              <option value="Kozhikode" data-i18n="district.kozhikode">Kozhikode</option>
+              <option value="Wayanad" data-i18n="district.wayanad">Wayanad</option>
+              <option value="Kannur" data-i18n="district.kannur">Kannur</option>
+              <option value="Kasaragod" data-i18n="district.kasaragod">Kasaragod</option>
             </select>
           </label>
 
           <label>
-            Feedback
-            <textarea id="message" name="message" rows="7" required placeholder="Please share your thoughts, questions, or request for follow-up."></textarea>
+            <span data-i18n="feedback.message">Feedback</span>
+            <textarea id="message" name="message" rows="7" required placeholder="Please share your thoughts, questions, or request for follow-up." data-i18n-placeholder="feedback.messagePlaceholder"></textarea>
           </label>
 
           <div class="voice-row">
-            <button class="button button--voice" type="button" id="voiceButton">Start Voice</button>
-            <span id="voiceStatus" class="voice-status">Voice input is optional.</span>
+            <button class="button button--voice" type="button" id="voiceButton" data-i18n="feedback.voiceStart">Start Voice</button>
+            <span id="voiceStatus" class="voice-status" data-i18n="feedback.voiceOptional">Voice input is optional.</span>
           </div>
 
-          <button class="button button--submit" type="submit">Submit Feedback</button>
+          <button class="button button--submit" type="submit" data-i18n="feedback.submit">Submit Feedback</button>
         </form>
 
         <div id="thanks" class="thanks" hidden>
-          <h2 id="thanksTitle">Thanks for your feedback.</h2>
-          <p>We have received your message and will get back to you soon, insha Allah.</p>
-          <p class="muted small">This page will try to close automatically. If it stays open, you can close this tab.</p>
-          <button class="button button--primary" type="button" id="closePage">Close Page</button>
+          <h2 id="thanksTitle" data-i18n="feedback.thanksTitle">Thanks for your feedback.</h2>
+          <p data-i18n="feedback.thanksBody">We have received your message and will get back to you soon, insha Allah.</p>
+          <p class="muted small" data-i18n="feedback.closeHint">This page will try to close automatically. If it stays open, you can close this tab.</p>
+          <button class="button button--primary" type="button" id="closePage" data-i18n="feedback.closePage">Close Page</button>
         </div>
       </section>
     </main>

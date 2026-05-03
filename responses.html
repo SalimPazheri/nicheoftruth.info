@@ -14,30 +14,38 @@
           <img src="./assets/nicheoftruth-logo.png" alt="" aria-hidden="true">
         </span>
         <span>
-          <strong>Niche of Truth</strong>
-          <small>Feedback admin</small>
+          <strong data-i18n="brand.name">Niche of Truth</strong>
+          <small data-i18n="brand.admin">Feedback admin</small>
         </span>
       </a>
+      <label class="language-control language-control--dark">
+        <span data-i18n="language.label">Language</span>
+        <select id="languageSelect" aria-label="Language">
+          <option value="en">English</option>
+          <option value="hi">Hindi</option>
+          <option value="ar">Arabic</option>
+        </select>
+      </label>
     </header>
 
     <main class="table-shell">
       <section class="panel panel--wide" id="loginPanel">
-        <p class="eyebrow eyebrow--dark">Admin login</p>
-        <h1>Feedback entries</h1>
-        <p class="muted">Login to view submitted feedback.</p>
+        <p class="eyebrow eyebrow--dark" data-i18n="admin.loginEyebrow">Admin login</p>
+        <h1 data-i18n="admin.entriesTitle">Feedback entries</h1>
+        <p class="muted" data-i18n="admin.loginIntro">Login to view submitted feedback.</p>
 
         <form id="loginForm" class="feedback-form">
           <label>
-            Email
+            <span data-i18n="admin.email">Email</span>
             <input id="loginEmail" name="email" type="email" autocomplete="username" required>
           </label>
 
           <label>
-            Password
+            <span data-i18n="admin.password">Password</span>
             <input id="loginPassword" name="password" type="password" autocomplete="current-password" required>
           </label>
 
-          <button class="button button--submit" type="submit">Login</button>
+          <button class="button button--submit" type="submit" data-i18n="admin.login">Login</button>
           <p id="loginMessage" class="form-message" aria-live="polite"></p>
         </form>
       </section>
@@ -45,41 +53,41 @@
       <section class="panel panel--wide" id="entriesPanel" hidden>
         <div class="table-heading">
           <div>
-            <p class="eyebrow eyebrow--dark">Admin feedback list</p>
-            <h1>Feedback entries</h1>
+            <p class="eyebrow eyebrow--dark" data-i18n="admin.listEyebrow">Admin feedback list</p>
+            <h1 data-i18n="admin.entriesTitle">Feedback entries</h1>
           </div>
-          <button class="button button--secondary-dark" id="logoutButton" type="button">Logout</button>
+          <button class="button button--secondary-dark" id="logoutButton" type="button" data-i18n="admin.logout">Logout</button>
         </div>
 
         <form id="entriesFilters" class="filters">
           <label>
-            Submitted date
+            <span data-i18n="admin.submittedDate">Submitted date</span>
             <input id="dateFilter" name="date" type="date">
           </label>
 
           <label>
-            District
+            <span data-i18n="feedback.district">District</span>
             <select id="districtFilter" name="district">
-              <option value="">All districts</option>
-              <option>Thiruvananthapuram</option>
-              <option>Kollam</option>
-              <option>Pathanamthitta</option>
-              <option>Alappuzha</option>
-              <option>Kottayam</option>
-              <option>Idukki</option>
-              <option>Ernakulam</option>
-              <option>Thrissur</option>
-              <option>Palakkad</option>
-              <option>Malappuram</option>
-              <option>Kozhikode</option>
-              <option>Wayanad</option>
-              <option>Kannur</option>
-              <option>Kasaragod</option>
+              <option value="" data-i18n="district.all">All districts</option>
+              <option value="Thiruvananthapuram" data-i18n="district.thiruvananthapuram">Thiruvananthapuram</option>
+              <option value="Kollam" data-i18n="district.kollam">Kollam</option>
+              <option value="Pathanamthitta" data-i18n="district.pathanamthitta">Pathanamthitta</option>
+              <option value="Alappuzha" data-i18n="district.alappuzha">Alappuzha</option>
+              <option value="Kottayam" data-i18n="district.kottayam">Kottayam</option>
+              <option value="Idukki" data-i18n="district.idukki">Idukki</option>
+              <option value="Ernakulam" data-i18n="district.ernakulam">Ernakulam</option>
+              <option value="Thrissur" data-i18n="district.thrissur">Thrissur</option>
+              <option value="Palakkad" data-i18n="district.palakkad">Palakkad</option>
+              <option value="Malappuram" data-i18n="district.malappuram">Malappuram</option>
+              <option value="Kozhikode" data-i18n="district.kozhikode">Kozhikode</option>
+              <option value="Wayanad" data-i18n="district.wayanad">Wayanad</option>
+              <option value="Kannur" data-i18n="district.kannur">Kannur</option>
+              <option value="Kasaragod" data-i18n="district.kasaragod">Kasaragod</option>
             </select>
           </label>
 
-          <button class="button button--secondary-dark" type="submit">Search</button>
-          <button class="button button--secondary-dark" id="clearFilters" type="button">Clear</button>
+          <button class="button button--secondary-dark" type="submit" data-i18n="admin.search">Search</button>
+          <button class="button button--secondary-dark" id="clearFilters" type="button" data-i18n="admin.clear">Clear</button>
         </form>
 
         <p id="entriesStatus" class="form-message" aria-live="polite"></p>
@@ -88,11 +96,11 @@
           <table>
             <thead>
               <tr>
-                <th>Date</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>District</th>
-                <th>Feedback</th>
+                <th data-i18n="admin.date">Date</th>
+                <th data-i18n="feedback.name">Name</th>
+                <th data-i18n="admin.phone">Phone</th>
+                <th data-i18n="feedback.district">District</th>
+                <th data-i18n="feedback.message">Feedback</th>
               </tr>
             </thead>
             <tbody id="entriesBody"></tbody>

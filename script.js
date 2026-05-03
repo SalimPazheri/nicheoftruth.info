@@ -1,11 +1,235 @@
 (function () {
   const storageKey = 'nicheoftruth_feedback_entries';
+  const languageKey = 'nicheoftruth_language';
   const supabaseUrl = 'https://nihkdysxoplpegwqlayi.supabase.co';
   const supabaseKey = 'sb_publishable_-lx2myS6ubyMTBpKZ5eS3g_fFIbs_of';
   const submitTimeoutMs = 8000;
   const supabaseClient = window.supabase
     ? window.supabase.createClient(supabaseUrl, supabaseKey)
     : null;
+  const translations = {
+    en: {
+      'brand.name': 'Niche of Truth',
+      'brand.feedback': 'Quran feedback',
+      'brand.admin': 'Feedback admin',
+      'language.label': 'Language',
+      'nav.feedback': 'Feedback',
+      'home.eyebrow': 'For sincere questions, calm answers, and open hearts',
+      'home.title': 'Ask freely. Reflect deeply. Discover Islam with clarity.',
+      'home.lead': 'Niche of Truth is a welcoming space for non-Muslim visitors to ask questions about Islam, request guidance, and share feedback after receiving a free Malayalam translation of the Holy Quran.',
+      'home.feedbackCta': 'Leave Quran Feedback',
+      'home.askCta': 'Ask a Question',
+      'feedback.eyebrow': 'Free Malayalam Quran copy',
+      'feedback.title': 'Share your feedback',
+      'feedback.intro': 'You can type your message or use voice input. Your feedback helps us improve how we serve visitors across Kerala.',
+      'feedback.name': 'Name',
+      'feedback.namePlaceholder': 'Your name',
+      'feedback.phone': 'Mobile or WhatsApp',
+      'feedback.district': 'District',
+      'feedback.message': 'Feedback',
+      'feedback.messagePlaceholder': 'Please share your thoughts, questions, or request for follow-up.',
+      'feedback.voiceStart': 'Start Voice',
+      'feedback.voiceStop': 'Stop Voice',
+      'feedback.voiceOptional': 'Voice input is optional.',
+      'feedback.voiceListening': 'Listening... speak your feedback.',
+      'feedback.voiceStopped': 'Voice stopped. You can edit the text before submitting.',
+      'feedback.voiceFailed': 'Voice input failed. Please type your feedback.',
+      'feedback.voiceUnsupported': 'Voice input is not supported in this browser. Please type your feedback.',
+      'feedback.submit': 'Submit Feedback',
+      'feedback.submitting': 'Submitting...',
+      'feedback.thanksTitle': 'Thanks for your feedback.',
+      'feedback.thanksNamed': 'Thanks, {name}.',
+      'feedback.thanksBody': 'We have received your message and will get back to you soon, insha Allah.',
+      'feedback.closeHint': 'This page will try to close automatically. If it stays open, you can close this tab.',
+      'feedback.closePage': 'Close Page',
+      'admin.loginEyebrow': 'Admin login',
+      'admin.entriesTitle': 'Feedback entries',
+      'admin.loginIntro': 'Login to view submitted feedback.',
+      'admin.email': 'Email',
+      'admin.password': 'Password',
+      'admin.login': 'Login',
+      'admin.loggingIn': 'Logging in...',
+      'admin.loginUnavailable': 'Login is unavailable. Please try again later.',
+      'admin.loginFailed': 'Login failed. Please check the email and password.',
+      'admin.listEyebrow': 'Admin feedback list',
+      'admin.logout': 'Logout',
+      'admin.submittedDate': 'Submitted date',
+      'admin.search': 'Search',
+      'admin.clear': 'Clear',
+      'admin.date': 'Date',
+      'admin.phone': 'Phone',
+      'admin.loading': 'Loading feedback...',
+      'admin.noEntries': 'No feedback entries yet.',
+      'admin.noEntriesFound': 'No feedback entries found.',
+      'admin.unableToLoad': 'Unable to load feedback entries.',
+      'admin.entriesFoundOne': '1 feedback entry found.',
+      'admin.entriesFoundMany': '{count} feedback entries found.',
+      'district.select': 'Select district',
+      'district.all': 'All districts',
+      'district.thiruvananthapuram': 'Thiruvananthapuram',
+      'district.kollam': 'Kollam',
+      'district.pathanamthitta': 'Pathanamthitta',
+      'district.alappuzha': 'Alappuzha',
+      'district.kottayam': 'Kottayam',
+      'district.idukki': 'Idukki',
+      'district.ernakulam': 'Ernakulam',
+      'district.thrissur': 'Thrissur',
+      'district.palakkad': 'Palakkad',
+      'district.malappuram': 'Malappuram',
+      'district.kozhikode': 'Kozhikode',
+      'district.wayanad': 'Wayanad',
+      'district.kannur': 'Kannur',
+      'district.kasaragod': 'Kasaragod'
+    },
+    hi: {
+      'brand.name': 'निच ऑफ ट्रुथ',
+      'brand.feedback': 'कुरआन प्रतिक्रिया',
+      'brand.admin': 'प्रतिक्रिया एडमिन',
+      'language.label': 'भाषा',
+      'nav.feedback': 'प्रतिक्रिया',
+      'home.eyebrow': 'सच्चे सवाल, शांत जवाब और खुले दिल',
+      'home.title': 'खुलकर पूछें। गहराई से सोचें। स्पष्टता के साथ इस्लाम को जानें।',
+      'home.lead': 'निच ऑफ ट्रुथ गैर-मुस्लिम आगंतुकों के लिए इस्लाम के बारे में सवाल पूछने, मार्गदर्शन मांगने और पवित्र कुरआन के मुफ्त मलयालम अनुवाद को प्राप्त करने के बाद प्रतिक्रिया साझा करने की एक स्वागतपूर्ण जगह है।',
+      'home.feedbackCta': 'कुरआन प्रतिक्रिया दें',
+      'home.askCta': 'सवाल पूछें',
+      'feedback.eyebrow': 'मुफ्त मलयालम कुरआन प्रति',
+      'feedback.title': 'अपनी प्रतिक्रिया साझा करें',
+      'feedback.intro': 'आप अपना संदेश टाइप कर सकते हैं या वॉइस इनपुट का उपयोग कर सकते हैं। आपकी प्रतिक्रिया हमें केरल के आगंतुकों की बेहतर सेवा करने में मदद करती है।',
+      'feedback.name': 'नाम',
+      'feedback.namePlaceholder': 'आपका नाम',
+      'feedback.phone': 'मोबाइल या व्हाट्सऐप',
+      'feedback.district': 'जिला',
+      'feedback.message': 'प्रतिक्रिया',
+      'feedback.messagePlaceholder': 'कृपया अपने विचार, सवाल या फॉलो-अप अनुरोध साझा करें।',
+      'feedback.voiceStart': 'वॉइस शुरू करें',
+      'feedback.voiceStop': 'वॉइस रोकें',
+      'feedback.voiceOptional': 'वॉइस इनपुट वैकल्पिक है।',
+      'feedback.voiceListening': 'सुन रहा है... अपनी प्रतिक्रिया बोलें।',
+      'feedback.voiceStopped': 'वॉइस रुक गई। सबमिट करने से पहले आप टेक्स्ट संपादित कर सकते हैं।',
+      'feedback.voiceFailed': 'वॉइस इनपुट विफल रहा। कृपया अपनी प्रतिक्रिया टाइप करें।',
+      'feedback.voiceUnsupported': 'इस ब्राउज़र में वॉइस इनपुट समर्थित नहीं है। कृपया अपनी प्रतिक्रिया टाइप करें।',
+      'feedback.submit': 'प्रतिक्रिया भेजें',
+      'feedback.submitting': 'भेजा जा रहा है...',
+      'feedback.thanksTitle': 'आपकी प्रतिक्रिया के लिए धन्यवाद।',
+      'feedback.thanksNamed': 'धन्यवाद, {name}।',
+      'feedback.thanksBody': 'हमें आपका संदेश मिल गया है और हम जल्द ही आपसे संपर्क करेंगे, इंशा अल्लाह।',
+      'feedback.closeHint': 'यह पेज अपने आप बंद होने की कोशिश करेगा। अगर यह खुला रहे, तो आप इस टैब को बंद कर सकते हैं।',
+      'feedback.closePage': 'पेज बंद करें',
+      'admin.loginEyebrow': 'एडमिन लॉगिन',
+      'admin.entriesTitle': 'प्रतिक्रिया प्रविष्टियां',
+      'admin.loginIntro': 'जमा की गई प्रतिक्रिया देखने के लिए लॉगिन करें।',
+      'admin.email': 'ईमेल',
+      'admin.password': 'पासवर्ड',
+      'admin.login': 'लॉगिन',
+      'admin.loggingIn': 'लॉगिन हो रहा है...',
+      'admin.loginUnavailable': 'लॉगिन उपलब्ध नहीं है। कृपया बाद में फिर कोशिश करें।',
+      'admin.loginFailed': 'लॉगिन विफल रहा। कृपया ईमेल और पासवर्ड जांचें।',
+      'admin.listEyebrow': 'एडमिन प्रतिक्रिया सूची',
+      'admin.logout': 'लॉगआउट',
+      'admin.submittedDate': 'जमा करने की तारीख',
+      'admin.search': 'खोजें',
+      'admin.clear': 'साफ करें',
+      'admin.date': 'तारीख',
+      'admin.phone': 'फोन',
+      'admin.loading': 'प्रतिक्रिया लोड हो रही है...',
+      'admin.noEntries': 'अभी कोई प्रतिक्रिया प्रविष्टि नहीं है।',
+      'admin.noEntriesFound': 'कोई प्रतिक्रिया प्रविष्टि नहीं मिली।',
+      'admin.unableToLoad': 'प्रतिक्रिया प्रविष्टियां लोड नहीं हो सकीं।',
+      'admin.entriesFoundOne': '1 प्रतिक्रिया प्रविष्टि मिली।',
+      'admin.entriesFoundMany': '{count} प्रतिक्रिया प्रविष्टियां मिलीं।',
+      'district.select': 'जिला चुनें',
+      'district.all': 'सभी जिले',
+      'district.thiruvananthapuram': 'तिरुवनंतपुरम',
+      'district.kollam': 'कोल्लम',
+      'district.pathanamthitta': 'पत्तनमथिट्टा',
+      'district.alappuzha': 'अलप्पुझा',
+      'district.kottayam': 'कोट्टायम',
+      'district.idukki': 'इडुक्की',
+      'district.ernakulam': 'एर्नाकुलम',
+      'district.thrissur': 'त्रिशूर',
+      'district.palakkad': 'पलक्कड़',
+      'district.malappuram': 'मलप्पुरम',
+      'district.kozhikode': 'कोझिकोड',
+      'district.wayanad': 'वायनाड',
+      'district.kannur': 'कन्नूर',
+      'district.kasaragod': 'कासरगोड'
+    },
+    ar: {
+      'brand.name': 'مكان الحقيقة',
+      'brand.feedback': 'ملاحظات القرآن',
+      'brand.admin': 'إدارة الملاحظات',
+      'language.label': 'اللغة',
+      'nav.feedback': 'الملاحظات',
+      'home.eyebrow': 'لأسئلة صادقة، وإجابات هادئة، وقلوب منفتحة',
+      'home.title': 'اسأل بحرية. تأمل بعمق. تعرّف إلى الإسلام بوضوح.',
+      'home.lead': 'مكان الحقيقة مساحة ترحيبية للزوار غير المسلمين لطرح أسئلة عن الإسلام، وطلب التوجيه، ومشاركة الملاحظات بعد استلام ترجمة مالايالامية مجانية للقرآن الكريم.',
+      'home.feedbackCta': 'أرسل ملاحظات القرآن',
+      'home.askCta': 'اطرح سؤالا',
+      'feedback.eyebrow': 'نسخة مجانية من القرآن بالمالايالامية',
+      'feedback.title': 'شارك ملاحظاتك',
+      'feedback.intro': 'يمكنك كتابة رسالتك أو استخدام الإدخال الصوتي. تساعدنا ملاحظاتك على تحسين خدمتنا للزوار في كيرلا.',
+      'feedback.name': 'الاسم',
+      'feedback.namePlaceholder': 'اسمك',
+      'feedback.phone': 'الجوال أو واتساب',
+      'feedback.district': 'المنطقة',
+      'feedback.message': 'الملاحظات',
+      'feedback.messagePlaceholder': 'يرجى مشاركة أفكارك أو أسئلتك أو طلب المتابعة.',
+      'feedback.voiceStart': 'ابدأ الصوت',
+      'feedback.voiceStop': 'أوقف الصوت',
+      'feedback.voiceOptional': 'الإدخال الصوتي اختياري.',
+      'feedback.voiceListening': 'نستمع الآن... تحدّث بملاحظاتك.',
+      'feedback.voiceStopped': 'توقف الصوت. يمكنك تعديل النص قبل الإرسال.',
+      'feedback.voiceFailed': 'فشل الإدخال الصوتي. يرجى كتابة ملاحظاتك.',
+      'feedback.voiceUnsupported': 'الإدخال الصوتي غير مدعوم في هذا المتصفح. يرجى كتابة ملاحظاتك.',
+      'feedback.submit': 'إرسال الملاحظات',
+      'feedback.submitting': 'جار الإرسال...',
+      'feedback.thanksTitle': 'شكرا لملاحظاتك.',
+      'feedback.thanksNamed': 'شكرا، {name}.',
+      'feedback.thanksBody': 'لقد استلمنا رسالتك وسنتواصل معك قريبا، إن شاء الله.',
+      'feedback.closeHint': 'ستحاول هذه الصفحة الإغلاق تلقائيا. إذا بقيت مفتوحة، يمكنك إغلاق هذا التبويب.',
+      'feedback.closePage': 'إغلاق الصفحة',
+      'admin.loginEyebrow': 'تسجيل دخول الإدارة',
+      'admin.entriesTitle': 'إدخالات الملاحظات',
+      'admin.loginIntro': 'سجّل الدخول لعرض الملاحظات المرسلة.',
+      'admin.email': 'البريد الإلكتروني',
+      'admin.password': 'كلمة المرور',
+      'admin.login': 'تسجيل الدخول',
+      'admin.loggingIn': 'جار تسجيل الدخول...',
+      'admin.loginUnavailable': 'تسجيل الدخول غير متاح. يرجى المحاولة لاحقا.',
+      'admin.loginFailed': 'فشل تسجيل الدخول. يرجى التحقق من البريد الإلكتروني وكلمة المرور.',
+      'admin.listEyebrow': 'قائمة ملاحظات الإدارة',
+      'admin.logout': 'تسجيل الخروج',
+      'admin.submittedDate': 'تاريخ الإرسال',
+      'admin.search': 'بحث',
+      'admin.clear': 'مسح',
+      'admin.date': 'التاريخ',
+      'admin.phone': 'الهاتف',
+      'admin.loading': 'جار تحميل الملاحظات...',
+      'admin.noEntries': 'لا توجد إدخالات ملاحظات حتى الآن.',
+      'admin.noEntriesFound': 'لم يتم العثور على ملاحظات.',
+      'admin.unableToLoad': 'تعذر تحميل إدخالات الملاحظات.',
+      'admin.entriesFoundOne': 'تم العثور على إدخال واحد.',
+      'admin.entriesFoundMany': 'تم العثور على {count} إدخالات.',
+      'district.select': 'اختر المنطقة',
+      'district.all': 'كل المناطق',
+      'district.thiruvananthapuram': 'ثيروفانانثابورام',
+      'district.kollam': 'كولام',
+      'district.pathanamthitta': 'باثانامثيتا',
+      'district.alappuzha': 'ألابوزا',
+      'district.kottayam': 'كوتايام',
+      'district.idukki': 'إدوكي',
+      'district.ernakulam': 'إرناكولام',
+      'district.thrissur': 'تريسور',
+      'district.palakkad': 'بالاكاد',
+      'district.malappuram': 'مالابورام',
+      'district.kozhikode': 'كوزيكود',
+      'district.wayanad': 'واياناد',
+      'district.kannur': 'كانور',
+      'district.kasaragod': 'كاساراجود'
+    }
+  };
+  let currentLanguage = getSavedLanguage();
+  let lastRenderedEntries = [];
 
   function getEntries() {
     try {
@@ -13,6 +237,106 @@
     } catch {
       return [];
     }
+  }
+
+  function getSavedLanguage() {
+    try {
+      const savedLanguage = localStorage.getItem(languageKey);
+      return translations[savedLanguage] ? savedLanguage : 'en';
+    } catch {
+      return 'en';
+    }
+  }
+
+  function saveLanguage(language) {
+    try {
+      localStorage.setItem(languageKey, language);
+    } catch {
+      // The selector still works for this page even if persistence is unavailable.
+    }
+  }
+
+  function t(key, replacements) {
+    const dictionary = translations[currentLanguage] || translations.en;
+    let value = dictionary[key] || translations.en[key] || key;
+
+    if (replacements) {
+      Object.keys(replacements).forEach(function (name) {
+        value = value.replace(`{${name}}`, replacements[name]);
+      });
+    }
+
+    return value;
+  }
+
+  function applyLanguage() {
+    document.documentElement.lang = currentLanguage;
+    document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+
+    document.querySelectorAll('[data-i18n]').forEach(function (element) {
+      element.textContent = t(element.getAttribute('data-i18n'));
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function (element) {
+      element.setAttribute('placeholder', t(element.getAttribute('data-i18n-placeholder')));
+    });
+
+    const languageSelect = document.getElementById('languageSelect');
+    if (languageSelect) {
+      languageSelect.value = currentLanguage;
+    }
+
+    updateDocumentTitle();
+  }
+
+  function updateDocumentTitle() {
+    if (document.getElementById('feedbackForm')) {
+      document.title = `${t('feedback.title')} | ${t('brand.name')}`;
+      return;
+    }
+
+    if (document.getElementById('loginForm')) {
+      document.title = `${t('admin.entriesTitle')} | ${t('brand.name')}`;
+      return;
+    }
+
+    document.title = t('brand.name');
+  }
+
+  function setupLanguageSelector() {
+    const languageSelect = document.getElementById('languageSelect');
+    if (!languageSelect) return;
+
+    languageSelect.value = currentLanguage;
+    languageSelect.addEventListener('change', function () {
+      currentLanguage = translations[languageSelect.value] ? languageSelect.value : 'en';
+      saveLanguage(currentLanguage);
+      applyLanguage();
+      updateVoiceUi();
+
+      if (entriesBody) {
+        renderEntries(lastRenderedEntries);
+      }
+    });
+  }
+
+  function updateVoiceUi() {
+    const voiceButton = document.getElementById('voiceButton');
+    const voiceStatus = document.getElementById('voiceStatus');
+
+    if (voiceButton && !voiceButton.classList.contains('is-listening')) {
+      voiceButton.textContent = t('feedback.voiceStart');
+    }
+
+    if (voiceStatus && voiceStatus.dataset.state) {
+      voiceStatus.textContent = t(voiceStatus.dataset.state);
+    }
+  }
+
+  function getSpeechLanguage() {
+    if (currentLanguage === 'hi') return 'hi-IN';
+    if (currentLanguage === 'ar') return 'ar-SA';
+    return 'en-US';
   }
 
   function saveEntry(entry) {
@@ -67,22 +391,24 @@
 
     if (SpeechRecognition) {
       recognition = new SpeechRecognition();
-      recognition.lang = 'ml-IN';
+      recognition.lang = getSpeechLanguage();
       recognition.continuous = true;
       recognition.interimResults = true;
 
       recognition.onstart = function () {
         listening = true;
         voiceButton.classList.add('is-listening');
-        voiceButton.textContent = 'Stop Voice';
-        voiceStatus.textContent = 'Listening... speak your feedback.';
+        voiceButton.textContent = t('feedback.voiceStop');
+        voiceStatus.dataset.state = 'feedback.voiceListening';
+        voiceStatus.textContent = t('feedback.voiceListening');
       };
 
       recognition.onend = function () {
         listening = false;
         voiceButton.classList.remove('is-listening');
-        voiceButton.textContent = 'Start Voice';
-        voiceStatus.textContent = 'Voice stopped. You can edit the text before submitting.';
+        voiceButton.textContent = t('feedback.voiceStart');
+        voiceStatus.dataset.state = 'feedback.voiceStopped';
+        voiceStatus.textContent = t('feedback.voiceStopped');
       };
 
       recognition.onresult = function (event) {
@@ -98,17 +424,22 @@
       };
 
       recognition.onerror = function () {
-        voiceStatus.textContent = 'Voice input failed. Please type your feedback.';
+        voiceStatus.dataset.state = 'feedback.voiceFailed';
+        voiceStatus.textContent = t('feedback.voiceFailed');
       };
     } else {
       voiceButton.disabled = true;
-      voiceStatus.textContent = 'Voice input is not supported in this browser. Please type your feedback.';
+      voiceStatus.dataset.state = 'feedback.voiceUnsupported';
+      voiceStatus.textContent = t('feedback.voiceUnsupported');
     }
 
     voiceButton.addEventListener('click', function () {
       if (!recognition) return;
       if (listening) recognition.stop();
-      else recognition.start();
+      else {
+        recognition.lang = getSpeechLanguage();
+        recognition.start();
+      }
     });
 
     if (closePage) {
@@ -149,7 +480,7 @@
 
       const submitButton = form.querySelector('[type="submit"]');
       submitButton.disabled = true;
-      submitButton.textContent = 'Submitting...';
+      submitButton.textContent = t('feedback.submitting');
 
       try {
         if (!supabaseClient) throw new Error('Supabase client is unavailable');
@@ -179,7 +510,7 @@
       }
 
       form.hidden = true;
-      thanksTitle.textContent = `Thanks, ${entry.name}.`;
+      thanksTitle.textContent = t('feedback.thanksNamed', { name: entry.name });
       thanks.hidden = false;
       window.scrollTo({ top: 0, behavior: 'smooth' });
       window.setTimeout(closeFeedbackPage, 2500);
@@ -188,6 +519,10 @@
 
   const entriesBody = document.getElementById('entriesBody');
   const loginForm = document.getElementById('loginForm');
+  applyLanguage();
+  setupLanguageSelector();
+  updateVoiceUi();
+
   if (loginForm) {
     const loginPanel = document.getElementById('loginPanel');
     const entriesPanel = document.getElementById('entriesPanel');
@@ -205,13 +540,13 @@
       event.preventDefault();
 
       if (!supabaseClient) {
-        loginMessage.textContent = 'Login is unavailable. Please try again later.';
+        loginMessage.textContent = t('admin.loginUnavailable');
         return;
       }
 
       const loginButton = loginForm.querySelector('[type="submit"]');
       loginButton.disabled = true;
-      loginButton.textContent = 'Logging in...';
+      loginButton.textContent = t('admin.loggingIn');
       loginMessage.textContent = '';
 
       try {
@@ -223,10 +558,10 @@
         if (error) throw error;
         await showEntries();
       } catch (error) {
-        loginMessage.textContent = error.message || 'Login failed. Please check the email and password.';
+        loginMessage.textContent = error.message || t('admin.loginFailed');
       } finally {
         loginButton.disabled = false;
-        loginButton.textContent = 'Login';
+        loginButton.textContent = t('admin.login');
       }
     });
 
@@ -253,7 +588,7 @@
 
     async function setupAdminPage() {
       if (!supabaseClient) {
-        loginMessage.textContent = 'Login is unavailable. Please try again later.';
+        loginMessage.textContent = t('admin.loginUnavailable');
         return;
       }
 
@@ -289,8 +624,8 @@
         query = query.eq('district', districtFilter.value);
       }
 
-      entriesStatus.textContent = 'Loading feedback...';
-      entriesBody.innerHTML = '<tr><td colspan="5">Loading feedback...</td></tr>';
+      entriesStatus.textContent = t('admin.loading');
+      entriesBody.innerHTML = `<tr><td colspan="5">${t('admin.loading')}</td></tr>`;
 
       try {
         const { data, error } = await query;
@@ -298,12 +633,12 @@
 
         renderEntries(data || []);
         entriesStatus.textContent = data && data.length
-          ? `${data.length} feedback entr${data.length === 1 ? 'y' : 'ies'} found.`
-          : 'No feedback entries found.';
+          ? t(data.length === 1 ? 'admin.entriesFoundOne' : 'admin.entriesFoundMany', { count: data.length })
+          : t('admin.noEntriesFound');
       } catch (error) {
         console.error('Feedback load failed:', error);
-        entriesStatus.textContent = error.message || 'Unable to load feedback entries.';
-        entriesBody.innerHTML = '<tr><td colspan="5">Unable to load feedback entries.</td></tr>';
+        entriesStatus.textContent = error.message || t('admin.unableToLoad');
+        entriesBody.innerHTML = `<tr><td colspan="5">${t('admin.unableToLoad')}</td></tr>`;
       }
     }
   }
@@ -313,6 +648,7 @@
   }
 
   function renderEntries(entries) {
+    lastRenderedEntries = entries;
     entriesBody.innerHTML = entries.length
       ? entries.map(function (entry) {
           return `
@@ -320,17 +656,29 @@
               <td>${formatDate(entry.created_at)}</td>
               <td>${escapeHtml(entry.name || '-')}</td>
               <td>${escapeHtml(entry.phone || '-')}</td>
-              <td>${escapeHtml(entry.district || '-')}</td>
+              <td>${escapeHtml(formatDistrict(entry.district))}</td>
               <td>${escapeHtml(entry.message || '-')}</td>
             </tr>
           `;
         }).join('')
-      : '<tr><td colspan="5">No feedback entries yet.</td></tr>';
+      : `<tr><td colspan="5">${t('admin.noEntries')}</td></tr>`;
   }
 
   function formatDate(value) {
     if (!value) return '-';
-    return new Date(value).toLocaleString();
+    const locale = currentLanguage === 'hi' ? 'hi-IN' : currentLanguage === 'ar' ? 'ar-SA' : 'en-IN';
+    return new Date(value).toLocaleString(locale);
+  }
+
+  function formatDistrict(value) {
+    if (!value) return '-';
+
+    const key = value
+      .toLowerCase()
+      .replace(/[^a-z]/g, '');
+    const districtKey = `district.${key}`;
+
+    return translations.en[districtKey] ? t(districtKey) : value;
   }
 
   function escapeHtml(value) {
